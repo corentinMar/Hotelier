@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeManagement projectID="DCE.062E32DC-848F-757B-F602-048487124A65">
+	<Locations nextID="1">
+	<Location locID="T.0" href=".\mvcPROJET.etup"/></Locations>
+
+   <Types>
+   <Type id="DCE.AB7E8E84-FDCE-0044-B883-F40CB654F2F3" location="T.0" name="Unnamed"/></Types>
+
+	<IrresolvableTypes>
+	</IrresolvableTypes>
+
+</TypeManagement>
