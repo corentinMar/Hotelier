@@ -4,8 +4,8 @@ namespace Album\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Album\Model\Album;          // <-- Add this import
-use Album\Form\AlbumForm;       // <-- Add this import
+use Album\Model\Album;
+use Album\Form\AlbumForm;
 
 class AlbumController extends AbstractActionController {
 
@@ -108,7 +108,6 @@ class AlbumController extends AbstractActionController {
          );
      }
 
-    // module/Album/src/Album/Controller/AlbumController.php:
     public function getAlbumTable() {
         if (!$this->albumTable) {
             $sm = $this->getServiceLocator();
