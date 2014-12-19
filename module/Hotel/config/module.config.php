@@ -2,23 +2,23 @@
 return  array ( 
      'controllers'  =>  array ( 
          'invokables'  =>  array ( 
-             'Album\Controller\Album'  =>  'Album\Controller\AlbumController' ,
+             'Hotel\Controller\Hotel'  =>  'Hotel\Controller\HotelController' ,
           ), 
      ),
 
      // La section suivante est nouveau et doit être ajouté à votre file 
      'router'  =>  array ( 
          'routes'  =>  array ( 
-             'album'  =>  array ( 
+             'hotel'  =>  array ( 
                  'type'     =>  'segment' , 
                  'options'  =>  array ( 
-                     'route'     =>  '/album[/][:action][/:id]' , 
+                     'route'     =>  '/hotel[/][:action][/:idHotel]' , 
                      'constraints'  =>  array ( 
                          'action'  =>  '[a-zA-Z][a-zA-Z0-9_-]*' , 
-                         'id'      =>  '[0-9]+' , 
+                         'idHotel'      =>  '[0-9]+' , 
                      ), 
                      'defaults'  =>  array ( 
-                         'controller'  =>  'Album\Controller\Album' , 
+                         'controller'  =>  'Hotel\Controller\Hotel' , 
                          'action'      =>  'index' , 
                      ), 
                  ), 
@@ -28,7 +28,7 @@ return  array (
 
       'view_manager'  =>  array ( 
          'template_path_stack'  =>  array ( 
-             'album'  =>  __DIR__  .  '/../view' , 
+             'hotel'  =>  __DIR__  .  '/../view' , 
          ), 
      ), 
  );

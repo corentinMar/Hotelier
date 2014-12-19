@@ -2,7 +2,7 @@
 return array(
      'modules' => array(
          'Application',
-         'Album',
+         'Hotel',
          'Chambre',
      ),
      'module_listener_options' => array(

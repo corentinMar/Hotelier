@@ -1,11 +1,11 @@
 <?php
 
-namespace Album;
+namespace Hotel;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Album\Model\Album;
-use Album\Model\AlbumTable;
+use Hotel\Model\Hotel;
+use Hotel\Model\HotelTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -31,15 +31,15 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'Album\Model\AlbumTable' => function($sm) {
-                    $tableGateway = $sm->get('AlbumTableGateway');
-                    $table = new AlbumTable($tableGateway);
+                'Hotel\Model\HotelTable' => function($sm) {
+                    $tableGateway = $sm->get('HotelTableGateway');
+                    $table = new HotelTable($tableGateway);
                     return $table;
                 },
-                'AlbumTableGateway' => function ($sm) {
+                'HotelTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Album());
+                    $resultSetPrototype->setArrayObjectPrototype(new Hotel());
                     return new TableGateway('hotel', $dbAdapter, null, $resultSetPrototype);
                 },
             ),

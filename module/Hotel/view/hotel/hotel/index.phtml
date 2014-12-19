@@ -1,0 +1,34 @@
+<?php
+
+ $title = 'Mes Hôtels';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('hotel', array('action'=>'add'));?>">Ajouter un hôtel</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Identifiant de l'adminsitrateur</th>
+     <th>Identifiant de l'hôtel</th>
+     <th>Nom de l'hôtel</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($hotels as $hotel) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($hotel->idAdministrateur);?></td>
+     <td><?php echo $this->escapeHtml($hotel->idHotel);?></td>
+     <td><?php echo $this->escapeHtml($hotel->nomHotel);?></td>
+     <td>
+         <p>
+            <a href="<?php echo $this->url('chambre', array('action'=>'index', 'idHotel' => $hotel->idHotel));?>">Gérer les chambres</a>
+            -
+            <a href="<?php echo $this->url('hotel', array('action'=>'edit', 'idHotel' => $hotel->idHotel));?>">Modifier</a>
+            |
+            <a href="<?php echo $this->url('hotel', array('action'=>'delete', 'idHotel' => $hotel->idHotel));?>">Supprimer</a>
+         </p>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>

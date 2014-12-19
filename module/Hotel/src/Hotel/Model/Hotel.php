@@ -1,12 +1,12 @@
 <?php
 
-namespace Album\Model;
+namespace Hotel\Model;
 
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
-class Album {
+class Hotel {
 
     public $idAdministrateur;
     public $idHotel;

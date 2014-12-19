@@ -6,18 +6,18 @@
  <h1><?php echo $this->escapeHtml($title); ?></h1>
 
  <p>Êtes vous sûr de supprimer l'hôtel 
-     <strong><?php echo $this->escapeHtml($album->nomHotel); ?></strong> de
-     <strong><?php echo $this->escapeHtml($album->idAdministrateur); ?></strong> ?
+     <strong><?php echo $this->escapeHtml($hotel->nomHotel); ?></strong> de
+     <strong><?php echo $this->escapeHtml($hotel->idAdministrateur); ?></strong> ?
  </p>
  <?php
- $url = $this->url('album', array(
+ $url = $this->url('hotel', array(
      'action' => 'delete',
      'id' => $this->idHotel,
  ));
  ?>
  <form action="<?php echo $url; ?>" method="post">
  <div>
-     <input type="hidden" name="idHotel" value="<?php echo (int) $album->idHotel; ?>" />
+     <input type="hidden" name="idHotel" value="<?php echo (int) $hotel->idHotel; ?>" />
      <input type="submit" name="del" value="Oui" />
      <input type="submit" name="del" value="Non" />
  </div>

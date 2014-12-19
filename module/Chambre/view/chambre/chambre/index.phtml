@@ -16,6 +16,7 @@
      <th>Type de la chambre</th>
      <th>&nbsp;</th>
  </tr>
+ <!-- echo 'Valeur idHotel : '.$idHotel.'<br />'; if($chambre->idHotel == $idHotel) { -->
  <?php foreach ($chambres as $chambre) : ?>
  <tr>
      <td><?php echo $this->escapeHtml($chambre->idHotel);?></td>
@@ -24,9 +25,9 @@
      <td><?php echo $this->escapeHtml($chambre->type);?></td>
      <td>
          <p>
-             <a href="<?php echo $this->url('chambre', array('action'=>'edit', 'id' => $chambre->idChambre));?>">Modifier</a>
+            <a href="<?php echo $this->url('chambre', array('action'=>'edit', 'idChambre' => $chambre->idChambre));?>">Modifier</a>
             |
-            <a href="<?php echo $this->url('chambre', array('action'=>'delete', 'id' => $chambre->idChambre));?>">Supprimer</a>
+            <a href="<?php echo $this->url('chambre', array('action'=>'delete', 'idChambre' => $chambre->idChambre));?>">Supprimer</a>
          </p>
      </td>
  </tr>

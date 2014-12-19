@@ -1,10 +1,10 @@
 <?php
 
-namespace Album\Model;
+namespace Hotel\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class AlbumTable {
+class HotelTable {
 
     protected $tableGateway;
 
@@ -17,7 +17,7 @@ class AlbumTable {
         return $resultSet;
     }
 
-    public function getAlbum($idHotel) {
+    public function getHotel($idHotel) {
         $idHotel = (int) $idHotel;
         $rowset = $this->tableGateway->select(array('idHotel' => $idHotel));
         $row = $rowset->current();
@@ -27,20 +27,20 @@ class AlbumTable {
         return $row;
     }
 
-    public function saveAlbum(Album $album) {
+    public function saveHotel(Hotel $hotel) {
         $data = array(
-            'idAdministrateur' => $album->idAdministrateur,
-            'idHotel' => $album->idHotel,
-            'nomHotel' => $album->nomHotel,
+            'idAdministrateur' => $hotel->idAdministrateur,
+            'idHotel' => $hotel->idHotel,
+            'nomHotel' => $hotel->nomHotel,
         );
 
-        $idHotel = (int) $album->idHotel;
+        $idHotel = (int) $hotel->idHotel;
         if ($idHotel == 0) {
             //Ajout
             $this->tableGateway->insert($data);
         } else {
             //Modification
-            if ($this->getAlbum($idHotel)) {
+            if ($this->getHotel($idHotel)) {
                 $this->tableGateway->update($data, array('idHotel' => $idHotel));
             } else {
                 throw new \Exception('L\id de l\'hôtel n\'existe pas.');
@@ -48,7 +48,7 @@ class AlbumTable {
         }
     }
 
-    public function deleteAlbum($idHotel) {
+    public function deleteHotel($idHotel) {
         $this->tableGateway->delete(array('idHotel' => (int) $idHotel));
     }
 

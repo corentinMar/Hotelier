@@ -1,13 +1,13 @@
 <?php
-namespace Album\Form;
+namespace Hotel\Form;
  use Zend\Form\Form;
 
- class AlbumForm extends Form
+ class HotelForm extends Form
  {
      public function __construct($name = null)
      {
          // we want to ignore the name passed
-         parent::__construct('album');
+         parent::__construct('hotel');
 
          //Champs
          $this->add(array(

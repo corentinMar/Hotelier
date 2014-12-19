@@ -14,6 +14,7 @@ class ChambreController extends AbstractActionController {
     public function indexAction() {
         return new ViewModel(array(
             'chambres' => $this->getChambreTable()->fetchAll(),
+            //'idHotel' => (int) $this->params()->fromRoute('idHotel', 0),
         ));
     }
 
@@ -41,7 +42,7 @@ class ChambreController extends AbstractActionController {
 
     public function editAction()
      {
-         $idChambre = (int) $this->params()->fromRoute('id', 0);
+         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
          if (!$idChambre) {
              return $this->redirect()->toRoute('chambre', array(
                  'action' => 'add'
@@ -84,7 +85,7 @@ class ChambreController extends AbstractActionController {
 
      public function deleteAction()
      {
-         $idChambre = (int) $this->params()->fromRoute('id', 0);
+         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
          if (!$idChambre) {
              return $this->redirect()->toRoute('chambre');
          }
