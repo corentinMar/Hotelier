@@ -1,0 +1,24 @@
+<?php
+
+ $title = 'Supprimer une chambre';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <p>Êtes vous sûr de supprimer la chambre 
+     <strong><?php echo $this->escapeHtml($chambre->idChambre); ?></strong> de
+     <strong><?php echo $this->escapeHtml($chambre->nomChambre); ?></strong> ?
+ </p>
+ <?php
+ $url = $this->url('chambre', array(
+     'action' => 'delete',
+     'id' => $this->idChambre,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="idChambre" value="<?php echo (int) $chambre->idChambre; ?>" />
+     <input type="submit" name="del" value="Oui" />
+     <input type="submit" name="del" value="Non" />
+ </div>
+ </form>

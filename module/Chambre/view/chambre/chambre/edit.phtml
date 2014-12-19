@@ -1,6 +1,6 @@
 <?php
 
- $title = 'Modifier un hôtel';
+ $title = 'Modifier une chambre';
  $this->headTitle($title);
  ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -8,19 +8,21 @@
  <?php
  $form = $this->form;
  $form->setAttribute('action', $this->url(
-     'album',
+     'chambre',
      array(
          'action' => 'edit',
-         'id' => $this->idHotel,
+         'id' => $this->idChambre,
      )
  ));
  $form->prepare();
 
  echo $this->form()->openTag($form);
- echo $this->formRow($form->get('idAdministrateur'));
+ echo $this->formRow($form->get('idHotel'));
  echo '<br />';
- echo $this->formHidden($form->get('idHotel'));
- echo $this->formRow($form->get('nomHotel'));
+ echo $this->formHidden($form->get('idChambre'));
+ echo $this->formRow($form->get('nomChambre'));
+ echo '<br />';
+ echo $this->formRow($form->get('type'));
  echo '<br />';
  echo $this->formSubmit($form->get('submit'));
  //echo $this->formSubmit($form->get('cancel'));

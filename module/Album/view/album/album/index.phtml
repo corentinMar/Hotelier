@@ -1,29 +1,31 @@
 <?php
- // module/Album/view/album/album/index.phtml:
 
- $title = 'My albums';
+ $title = 'Mes Hôtels';
  $this->headTitle($title);
  ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
  <p>
-     <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+     <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Ajouter un hôtel</a>
  </p>
 
  <table class="table">
  <tr>
-     <th>Title</th>
-     <th>Artist</th>
+     <th>Identifiant de l'adminsitrateur</th>
+     <th>Identifiant de l'hôtel</th>
+     <th>Nom de l'hôtel</th>
      <th>&nbsp;</th>
  </tr>
  <?php foreach ($albums as $album) : ?>
  <tr>
-     <td><?php echo $this->escapeHtml($album->title);?></td>
-     <td><?php echo $this->escapeHtml($album->artist);?></td>
+     <td><?php echo $this->escapeHtml($album->idAdministrateur);?></td>
+     <td><?php echo $this->escapeHtml($album->idHotel);?></td>
+     <td><?php echo $this->escapeHtml($album->nomHotel);?></td>
      <td>
-         <a href="<?php echo $this->url('album',
-             array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
-         <a href="<?php echo $this->url('album',
-             array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+         <p>
+             <a href="<?php echo $this->url('album', array('action'=>'edit', 'id' => $album->idHotel));?>">Modifier</a>
+            |
+            <a href="<?php echo $this->url('album', array('action'=>'delete', 'id' => $album->idHotel));?>">Supprimer</a>
+         </p>
      </td>
  </tr>
  <?php endforeach; ?>

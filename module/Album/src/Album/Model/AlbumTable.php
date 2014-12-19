@@ -17,36 +17,39 @@ class AlbumTable {
         return $resultSet;
     }
 
-    public function getAlbum($id) {
-        $id = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+    public function getAlbum($idHotel) {
+        $idHotel = (int) $idHotel;
+        $rowset = $this->tableGateway->select(array('idHotel' => $idHotel));
         $row = $rowset->current();
         if (!$row) {
-            throw new \Exception("Could not find row $id");
+            throw new \Exception("Impossible de trouver la ligne $idHotel");
         }
         return $row;
     }
 
     public function saveAlbum(Album $album) {
         $data = array(
-            'artist' => $album->artist,
-            'title' => $album->title,
+            'idAdministrateur' => $album->idAdministrateur,
+            'idHotel' => $album->idHotel,
+            'nomHotel' => $album->nomHotel,
         );
 
-        $id = (int) $album->id;
-        if ($id == 0) {
+        $idHotel = (int) $album->idHotel;
+        if ($idHotel == 0) {
+            //Ajout
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getAlbum($id)) {
-                $this->tableGateway->update($data, array('id' => $id));
+            //Modification
+            if ($this->getAlbum($idHotel)) {
+                $this->tableGateway->update($data, array('idHotel' => $idHotel));
             } else {
-                throw new \Exception('Album id does not exist');
+                throw new \Exception('L\id de l\'hôtel n\'existe pas.');
             }
         }
     }
 
-    public function deleteAlbum($id) {
-        $this->tableGateway->delete(array('id' => (int) $id));
+    public function deleteAlbum($idHotel) {
+        $this->tableGateway->delete(array('idHotel' => (int) $idHotel));
     }
 
 }

@@ -1,25 +1,24 @@
 <?php
- // module/Album/view/album/album/delete.phtml:
 
- $title = 'Delete album';
+ $title = 'Supprimer un hôtel';
  $this->headTitle($title);
  ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
 
- <p>Are you sure that you want to delete
-     '<?php echo $this->escapeHtml($album->title); ?>' by
-     '<?php echo $this->escapeHtml($album->artist); ?>'?
+ <p>Êtes vous sûr de supprimer l'hôtel 
+     <strong><?php echo $this->escapeHtml($album->nomHotel); ?></strong> de
+     <strong><?php echo $this->escapeHtml($album->idAdministrateur); ?></strong> ?
  </p>
  <?php
  $url = $this->url('album', array(
      'action' => 'delete',
-     'id'     => $this->id,
+     'id' => $this->idHotel,
  ));
  ?>
  <form action="<?php echo $url; ?>" method="post">
  <div>
-     <input type="hidden" name="id" value="<?php echo (int) $album->id; ?>" />
-     <input type="submit" name="del" value="Yes" />
-     <input type="submit" name="del" value="No" />
+     <input type="hidden" name="idHotel" value="<?php echo (int) $album->idHotel; ?>" />
+     <input type="submit" name="del" value="Oui" />
+     <input type="submit" name="del" value="Non" />
  </div>
  </form>

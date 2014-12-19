@@ -20,7 +20,7 @@ class AlbumController extends AbstractActionController {
     // Add content to this method:
     public function addAction() {
         $form = new AlbumForm();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue('Ajouter');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -41,8 +41,8 @@ class AlbumController extends AbstractActionController {
 
     public function editAction()
      {
-         $id = (int) $this->params()->fromRoute('id', 0);
-         if (!$id) {
+         $idHotel = (int) $this->params()->fromRoute('id', 0);
+         if (!$idHotel) {
              return $this->redirect()->toRoute('album', array(
                  'action' => 'add'
              ));
@@ -51,7 +51,7 @@ class AlbumController extends AbstractActionController {
          // Get the Album with the specified id.  An exception is thrown
          // if it cannot be found, in which case go to the index page.
          try {
-             $album = $this->getAlbumTable()->getAlbum($id);
+             $album = $this->getAlbumTable()->getAlbum($idHotel);
          }
          catch (\Exception $ex) {
              return $this->redirect()->toRoute('album', array(
@@ -59,10 +59,10 @@ class AlbumController extends AbstractActionController {
              ));
          }
 
-         $form  = new AlbumForm();
+         $form = new AlbumForm();
          $form->bind($album);
-         $form->get('submit')->setAttribute('value', 'Edit');
-
+         $form->get('submit')->setAttribute('value', 'Modifier');
+        
          $request = $this->getRequest();
          if ($request->isPost()) {
              $form->setInputFilter($album->getInputFilter());
@@ -77,25 +77,25 @@ class AlbumController extends AbstractActionController {
          }
 
          return array(
-             'id' => $id,
+             'idHotel' => $idHotel,
              'form' => $form,
          );
      }
 
      public function deleteAction()
      {
-         $id = (int) $this->params()->fromRoute('id', 0);
-         if (!$id) {
+         $idHotel = (int) $this->params()->fromRoute('id', 0);
+         if (!$idHotel) {
              return $this->redirect()->toRoute('album');
          }
 
          $request = $this->getRequest();
          if ($request->isPost()) {
-             $del = $request->getPost('del', 'No');
+             $del = $request->getPost('del', 'Non');
 
-             if ($del == 'Yes') {
-                 $id = (int) $request->getPost('id');
-                 $this->getAlbumTable()->deleteAlbum($id);
+             if ($del == 'Oui') {
+                 $idHotel = (int) $request->getPost('idHotel');
+                 $this->getAlbumTable()->deleteAlbum($idHotel);
              }
 
              // Redirect to list of albums
@@ -103,8 +103,8 @@ class AlbumController extends AbstractActionController {
          }
 
          return array(
-             'id'    => $id,
-             'album' => $this->getAlbumTable()->getAlbum($id)
+             'idHotel' => $idHotel,
+             'album' => $this->getAlbumTable()->getAlbum($idHotel)
          );
      }
 

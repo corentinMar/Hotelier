@@ -1,21 +1,23 @@
 <?php
 
-namespace Album\Model;
+namespace Chambre\Model;
 
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
-class Album {
+class Chambre {
 
-    public $idAdministrateur;
     public $idHotel;
-    public $nomHotel;
+    public $idChambre;
+    public $nomChambre;
+    public $type;
 
     public function exchangeArray($data) {
-        $this->idAdministrateur = (!empty($data['idAdministrateur'])) ? $data['idAdministrateur'] : null;
-        $this->idHotel = (!empty($data['idHotel'])) ? $data['idHotel'] : null;        
-        $this->nomHotel = (!empty($data['nomHotel'])) ? $data['nomHotel'] : null;
+        $this->idHotel = (!empty($data['idHotel'])) ? $data['idHotel'] : null;
+        $this->idChambre = (!empty($data['idChambre'])) ? $data['idChambre'] : null;        
+        $this->nomChambre = (!empty($data['nomChambre'])) ? $data['nomChambre'] : null;
+        $this->type = (!empty($data['type'])) ? $data['type'] : null;
     }
     
     // Add the following method:
@@ -32,14 +34,6 @@ class Album {
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();
-
-            $inputFilter->add(array(
-                'name' => 'idAdministrateur',
-                'required' => true,
-                'filters' => array(
-                    array('name' => 'Int'),
-                ),
-            ));
             
             $inputFilter->add(array(
                 'name' => 'idHotel',
@@ -48,9 +42,17 @@ class Album {
                     array('name' => 'Int'),
                 ),
             ));
+            
+            $inputFilter->add(array(
+                'name' => 'idChambre',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Int'),
+                ),
+            ));
 
             $inputFilter->add(array(
-                'name' => 'nomHotel',
+                'name' => 'nomChambre',
                 'required' => true,
                 'filters' => array(
                     array('name' => 'StripTags'),
@@ -65,6 +67,14 @@ class Album {
                             'max' => 100,
                         ),
                     ),
+                ),
+            ));
+            
+            $inputFilter->add(array(
+                'name' => 'type',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Int'),
                 ),
             ));
 

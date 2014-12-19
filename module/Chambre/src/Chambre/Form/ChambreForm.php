@@ -1,34 +1,42 @@
 <?php
-namespace Album\Form;
+namespace Chambre\Form;
  use Zend\Form\Form;
 
- class AlbumForm extends Form
+ class ChambreForm extends Form
  {
      public function __construct($name = null)
      {
          // we want to ignore the name passed
-         parent::__construct('album');
+         parent::__construct('chambre');
 
          //Champs
          $this->add(array(
-             'name' => 'idAdministrateur',
+             'name' => 'idHotel',
              'type' => 'Number',
              'options' => array(
-                'label' => 'L\'identifiant de l\'administrateur : ',
+                'label' => 'L\'identifiant de l\'hôtel : ',
             ),
          ));
          
          $this->add(array(
-             'name' => 'idHotel',
+             'name' => 'idChambre',
              'type' => 'Hidden',
          ));
          
          $this->add(array(
-             'name' => 'nomHotel',
+             'name' => 'nomChambre',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Nom de l\'hôtel : ',
+                 'label' => 'Nom de la chambre : ',
              ),
+         ));
+         
+         $this->add(array(
+             'name' => 'type',
+             'type' => 'Number',
+             'options' => array(
+                'label' => 'Le type de chambre : ',
+            ),
          ));
          
          //Bouton

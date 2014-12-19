@@ -15,7 +15,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Album\Controller\Album',
+                        'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
@@ -62,7 +62,7 @@ return array(
         ),
     ),
     'translator' => array(
-        'locale' => 'en_US',
+        'locale' => 'fr_FR',
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
