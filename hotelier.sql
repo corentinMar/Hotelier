@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 08 Décembre 2014 à 20:12
+-- Généré le :  Sam 27 Décembre 2014 à 00:54
 -- Version du serveur :  5.6.21
 -- Version de PHP :  5.6.3
 
@@ -19,25 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `hotelier`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `administrateur`
---
-
-CREATE TABLE IF NOT EXISTS `administrateur` (
-`idAdministrateur` int(11) NOT NULL,
-  `loginAdministrateur` text NOT NULL,
-  `mdpAdministrateur` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `administrateur`
---
-
-INSERT INTO `administrateur` (`idAdministrateur`, `loginAdministrateur`, `mdpAdministrateur`) VALUES
-(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -129,14 +110,17 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   `idAdministrateur` int(11) NOT NULL,
 `idHotel` int(11) NOT NULL,
   `nomHotel` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `hotel`
 --
 
 INSERT INTO `hotel` (`idAdministrateur`, `idHotel`, `nomHotel`) VALUES
-(1, 1, 'Hotel des Hotels');
+(1, 1, 'Hotel des Hotels'),
+(1, 2, 'Le Ritz'),
+(2, 3, 'Fouquet''s'),
+(2, 7, 'Test');
 
 -- --------------------------------------------------------
 
@@ -150,15 +134,30 @@ CREATE TABLE IF NOT EXISTS `television` (
   `prixTelevision` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+`id` int(11) NOT NULL,
+  `nom` text NOT NULL,
+  `motDePasse` text NOT NULL,
+  `administrateur` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `motDePasse`, `administrateur`) VALUES
+(1, 'admin', 'admin', 1),
+(2, 'test', 'test', 0);
+
 --
 -- Index pour les tables exportées
 --
-
---
--- Index pour la table `administrateur`
---
-ALTER TABLE `administrateur`
- ADD PRIMARY KEY (`idAdministrateur`);
 
 --
 -- Index pour la table `baignoire`
@@ -197,14 +196,15 @@ ALTER TABLE `television`
  ADD PRIMARY KEY (`idTelevision`);
 
 --
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
---
--- AUTO_INCREMENT pour la table `administrateur`
---
-ALTER TABLE `administrateur`
-MODIFY `idAdministrateur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `baignoire`
 --
@@ -229,12 +229,17 @@ MODIFY `idFrigo` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `hotel`
 --
 ALTER TABLE `hotel`
-MODIFY `idHotel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idHotel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `television`
 --
 ALTER TABLE `television`
 MODIFY `idTelevision` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
