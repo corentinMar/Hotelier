@@ -90,11 +90,14 @@ class AuthController extends AbstractActionController {
     }
 
     public function logoutAction() {
-        $this->getSessionStorage()->forgetMe();
-        $this->getAuthService()->clearIdentity();
+        //Si l'utilisateur est déjà connecté
+        if ($this->getAuthService()->hasIdentity()) {
 
-        $this->flashmessenger()->addMessage("Vous avez été déconnecté.");
+            $this->getSessionStorage()->forgetMe();
+            $this->getAuthService()->clearIdentity();
+
+            $this->flashmessenger()->addMessage("Vous avez été déconnecté.");
+        }
         return $this->redirect()->toRoute('login');
     }
-
 }

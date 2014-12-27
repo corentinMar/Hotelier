@@ -31,7 +31,7 @@ class AuthForm extends Form {
 
         $this->add(array(
             'name' => 'rememberme',
-            'type' => 'checkbox',
+            'type' => 'Checkbox',
             'options' => array(
                 'label' => 'Se souvenir de moi ? ',
             ),

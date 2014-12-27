@@ -1,22 +1,20 @@
 <?php
+$title = 'Ajouter une chambre';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('chambre', array('action' => 'add', 'idChambre' => $idHotel)));
+$form->prepare();
 
- $title = 'Ajouter une chambre';
- $this->headTitle($title);
- ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
- <?php
- $form->setAttribute('action', $this->url('chambre', array('action' => 'add')));
- $form->prepare();
-
- echo $this->form()->openTag($form);
- echo $this->formRow($form->get('idHotel'));
- echo '<br />';
- echo $this->formHidden($form->get('idChambre'));
- echo '<br />';
- echo $this->formRow($form->get('nomChambre'));
- echo '<br />';
- echo $this->formRow($form->get('type'));
- echo '<br />';
- echo $this->formSubmit($form->get('submit'));
- //echo $this->formSubmit($form->get('cancel'));
- echo $this->form()->closeTag();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('idChambre'));
+echo '<br />';
+echo $this->formHidden($form->get('idHotel'));
+echo '<br />';
+echo $this->formRow($form->get('nomChambre'));
+echo '<br />';
+echo $this->formRow($form->get('type'));
+echo '<br />';
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

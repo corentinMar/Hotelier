@@ -29,8 +29,8 @@ class HotelTable {
 
     public function saveHotel(Hotel $hotel) {
         $data = array(
-            'idAdministrateur' => $hotel->idAdministrateur,
             'idHotel' => $hotel->idHotel,
+            'idAdministrateur' => $hotel->idAdministrateur,
             'nomHotel' => $hotel->nomHotel,
         );
 

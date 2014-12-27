@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 27 Décembre 2014 à 00:54
+-- Généré le :  Sam 27 Décembre 2014 à 23:34
 -- Version du serveur :  5.6.21
 -- Version de PHP :  5.6.3
 
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `baignoire` (
-  `idChambre` int(11) NOT NULL,
 `idBaignoire` int(11) NOT NULL,
+  `idChambre` int(11) NOT NULL,
   `prixBaignoire` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -36,10 +36,10 @@ CREATE TABLE IF NOT EXISTS `baignoire` (
 -- Contenu de la table `baignoire`
 --
 
-INSERT INTO `baignoire` (`idChambre`, `idBaignoire`, `prixBaignoire`) VALUES
-(3, 1, 20),
-(5, 2, 20),
-(6, 3, 20);
+INSERT INTO `baignoire` (`idBaignoire`, `idChambre`, `prixBaignoire`) VALUES
+(1, 3, 20),
+(2, 5, 20),
+(3, 6, 20);
 
 -- --------------------------------------------------------
 
@@ -48,23 +48,25 @@ INSERT INTO `baignoire` (`idChambre`, `idBaignoire`, `prixBaignoire`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `chambre` (
-  `idHotel` int(11) NOT NULL,
 `idChambre` int(11) NOT NULL,
+  `idHotel` int(11) NOT NULL,
   `nomChambre` text NOT NULL,
   `type` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `chambre`
 --
 
-INSERT INTO `chambre` (`idHotel`, `idChambre`, `nomChambre`, `type`) VALUES
+INSERT INTO `chambre` (`idChambre`, `idHotel`, `nomChambre`, `type`) VALUES
 (1, 1, 'E100', 1),
-(1, 2, 'E101', 1),
-(1, 3, 'E102', 2),
-(1, 4, 'E201', 1),
-(1, 5, 'E202', 2),
-(1, 6, 'E103', 1);
+(2, 1, 'E101', 1),
+(3, 1, 'E102', 2),
+(4, 1, 'E201', 1),
+(5, 1, 'E202', 2),
+(6, 1, 'E103', 1),
+(7, 2, '001', 3),
+(8, 2, '002', 1);
 
 -- --------------------------------------------------------
 
@@ -73,8 +75,8 @@ INSERT INTO `chambre` (`idHotel`, `idChambre`, `nomChambre`, `type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `douche` (
-  `idChambre` int(11) NOT NULL,
 `idDouche` int(11) NOT NULL,
+  `idChambre` int(11) NOT NULL,
   `prixDouche` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -82,11 +84,11 @@ CREATE TABLE IF NOT EXISTS `douche` (
 -- Contenu de la table `douche`
 --
 
-INSERT INTO `douche` (`idChambre`, `idDouche`, `prixDouche`) VALUES
+INSERT INTO `douche` (`idDouche`, `idChambre`, `prixDouche`) VALUES
 (1, 1, 10),
 (2, 2, 10),
-(4, 3, 10),
-(6, 4, 10);
+(3, 4, 10),
+(4, 6, 10);
 
 -- --------------------------------------------------------
 
@@ -95,8 +97,8 @@ INSERT INTO `douche` (`idChambre`, `idDouche`, `prixDouche`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `frigo` (
-  `idChambre` int(11) NOT NULL,
 `idFrigo` int(11) NOT NULL,
+  `idChambre` int(11) NOT NULL,
   `prixFrigo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -107,20 +109,20 @@ CREATE TABLE IF NOT EXISTS `frigo` (
 --
 
 CREATE TABLE IF NOT EXISTS `hotel` (
-  `idAdministrateur` int(11) NOT NULL,
 `idHotel` int(11) NOT NULL,
+  `idAdministrateur` int(11) NOT NULL,
   `nomHotel` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `hotel`
 --
 
-INSERT INTO `hotel` (`idAdministrateur`, `idHotel`, `nomHotel`) VALUES
+INSERT INTO `hotel` (`idHotel`, `idAdministrateur`, `nomHotel`) VALUES
 (1, 1, 'Hotel des Hotels'),
-(1, 2, 'Le Ritz'),
-(2, 3, 'Fouquet''s'),
-(2, 7, 'Test');
+(2, 1, 'Le Ritz'),
+(3, 2, 'Fouquet''s'),
+(4, 2, 'Test');
 
 -- --------------------------------------------------------
 
@@ -129,8 +131,8 @@ INSERT INTO `hotel` (`idAdministrateur`, `idHotel`, `nomHotel`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `television` (
-  `idChambre` int(11) NOT NULL,
 `idTelevision` int(11) NOT NULL,
+  `idChambre` int(11) NOT NULL,
   `prixTelevision` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -214,7 +216,7 @@ MODIFY `idBaignoire` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT pour la table `chambre`
 --
 ALTER TABLE `chambre`
-MODIFY `idChambre` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idChambre` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `douche`
 --
@@ -229,7 +231,7 @@ MODIFY `idFrigo` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `hotel`
 --
 ALTER TABLE `hotel`
-MODIFY `idHotel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idHotel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `television`
 --

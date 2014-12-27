@@ -27,10 +27,19 @@ class ChambreTable {
         return $row;
     }
 
+    public function getListeChambre($idHotel) {
+        $idHotel = (int) $idHotel;
+        $rowset = $this->tableGateway->select(array('idHotel' => $idHotel));
+        if (!$rowset) {
+            throw new \Exception("Impossible de trouver les lignes pour l'hotel n° $idHotel");
+        }
+        return $rowset;
+    }
+
     public function saveChambre(Chambre $chambre) {
         $data = array(
-            'idHotel' => $chambre->idHotel,
             'idChambre' => $chambre->idChambre,
+            'idHotel' => $chambre->idHotel,
             'nomChambre' => $chambre->nomChambre,
             'type' => $chambre->type,
         );

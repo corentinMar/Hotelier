@@ -8,23 +8,20 @@ use Zend\InputFilter\InputFilterInterface;
 
 class Hotel {
 
-    public $idAdministrateur;
     public $idHotel;
+    public $idAdministrateur;
     public $nomHotel;
 
     public function exchangeArray($data) {
+        $this->idHotel = (!empty($data['idHotel'])) ? $data['idHotel'] : null;
         $this->idAdministrateur = (!empty($data['idAdministrateur'])) ? $data['idAdministrateur'] : null;
-        $this->idHotel = (!empty($data['idHotel'])) ? $data['idHotel'] : null;        
         $this->nomHotel = (!empty($data['nomHotel'])) ? $data['nomHotel'] : null;
     }
-    
-    // Add the following method:
-     public function getArrayCopy()
-     {
-         return get_object_vars($this);
-     }
 
-    // Add content to these methods:
+    public function getArrayCopy() {
+        return get_object_vars($this);
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Non utilisé");
     }
@@ -34,15 +31,15 @@ class Hotel {
             $inputFilter = new InputFilter();
 
             $inputFilter->add(array(
-                'name' => 'idAdministrateur',
+                'name' => 'idHotel',
                 'required' => true,
                 'filters' => array(
                     array('name' => 'Int'),
                 ),
             ));
-            
+
             $inputFilter->add(array(
-                'name' => 'idHotel',
+                'name' => 'idAdministrateur',
                 'required' => true,
                 'filters' => array(
                     array('name' => 'Int'),

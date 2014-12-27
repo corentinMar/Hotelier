@@ -12,15 +12,28 @@ class ChambreController extends AbstractActionController {
     protected $chambreTable;
 
     public function indexAction() {
+        /* return new ViewModel(array(
+          'chambres' => $this->getChambreTable()->fetchAll(),
+          )); */
+
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         return new ViewModel(array(
-            'chambres' => $this->getChambreTable()->fetchAll(),
-            //'idHotel' => (int) $this->params()->fromRoute('idHotel', 0),
+            'chambres' => $this->getChambreTable()->getListeChambre($idHotel),
+            'idHotel' => $idHotel,
         ));
     }
 
     // Add content to this method:
     public function addAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        if (!$idHotel) {
+            return $this->redirect()->toRoute('hotel', array(
+                        'action' => 'index',
+            ));
+        }
+
         $form = new ChambreForm();
+        $form->get('idHotel')->setValue($idHotel);
         $form->get('submit')->setValue('Ajouter');
 
         $request = $this->getRequest();
@@ -34,80 +47,102 @@ class ChambreController extends AbstractActionController {
                 $this->getChambreTable()->saveChambre($chambre);
 
                 // Redirect to list of chambres
-                return $this->redirect()->toRoute('chambre');
+                return $this->redirect()->toRoute('chambre', array(
+                            'action' => 'index',
+                            'idHotel' => $idHotel,
+                ));
             }
         }
-        return array('form' => $form);
+        return array('form' => $form, 'idHotel' => $idHotel);
     }
 
-    public function editAction()
-     {
-         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
-         if (!$idChambre) {
-             return $this->redirect()->toRoute('chambre', array(
-                 'action' => 'add'
-             ));
-         }
+    public function editAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        if (!$idHotel) {
+            return $this->redirect()->toRoute('hotel', array(
+                        'action' => 'index',
+            ));
+        }
 
-         // Get the Chambre with the specified id.  An exception is thrown
-         // if it cannot be found, in which case go to the index page.
-         try {
-             $chambre = $this->getChambreTable()->getChambre($idChambre);
-         }
-         catch (\Exception $ex) {
-             return $this->redirect()->toRoute('chambre', array(
-                 'action' => 'index'
-             ));
-         }
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        if (!$idChambre) {
+            return $this->redirect()->toRoute('chambre', array(
+                        'action' => 'add'
+            ));
+        }
 
-         $form = new ChambreForm();
-         $form->bind($chambre);
-         $form->get('submit')->setAttribute('value', 'Modifier');
-        
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $form->setInputFilter($chambre->getInputFilter());
-             $form->setData($request->getPost());
+        // Get the Chambre with the specified id.  An exception is thrown
+        // if it cannot be found, in which case go to the index page.
+        try {
+            $chambre = $this->getChambreTable()->getChambre($idChambre);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('chambre', array(
+                        'action' => 'index'
+            ));
+        }
 
-             if ($form->isValid()) {
-                 $this->getChambreTable()->saveChambre($chambre);
+        $form = new ChambreForm();
+        $form->bind($chambre);
+        $form->get('submit')->setAttribute('value', 'Modifier');
 
-                 // Redirect to list of chambres
-                 return $this->redirect()->toRoute('chambre');
-             }
-         }
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($chambre->getInputFilter());
+            $form->setData($request->getPost());
 
-         return array(
-             'idChambre' => $idChambre,
-             'form' => $form,
-         );
-     }
+            if ($form->isValid()) {
+                $this->getChambreTable()->saveChambre($chambre);
 
-     public function deleteAction()
-     {
-         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
-         if (!$idChambre) {
-             return $this->redirect()->toRoute('chambre');
-         }
+                // Redirect to list of chambres
+                return $this->redirect()->toRoute('chambre', array(
+                            'action' => 'index',
+                            'idHotel' => $idHotel,
+                ));
+            }
+        }
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $del = $request->getPost('del', 'Non');
+        return array(
+            'idChambre' => $idChambre,
+            'form' => $form,
+            'idHotel' => $idHotel,
+        );
+    }
 
-             if ($del == 'Oui') {
-                 $idChambre = (int) $request->getPost('idChambre');
-                 $this->getChambreTable()->deleteChambre($idChambre);
-             }
+    public function deleteAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        if (!$idHotel) {
+            return $this->redirect()->toRoute('hotel', array(
+                        'action' => 'index',
+            ));
+        }
 
-             // Redirect to list of chambres
-             return $this->redirect()->toRoute('chambre');
-         }
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        if (!$idChambre) {
+            return $this->redirect()->toRoute('chambre');
+        }
 
-         return array(
-             'idChambre' => $idChambre,
-             'chambre' => $this->getChambreTable()->getChambre($idChambre)
-         );
-     }
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'Non');
+
+            if ($del == 'Oui') {
+                $idChambre = (int) $request->getPost('idChambre');
+                $this->getChambreTable()->deleteChambre($idChambre);
+            }
+
+            // Redirect to list of chambres
+            return $this->redirect()->toRoute('chambre', array(
+                        'action' => 'index',
+                        'idHotel' => $idHotel,
+            ));
+        }
+
+        return array(
+            'idChambre' => $idChambre,
+            'chambre' => $this->getChambreTable()->getChambre($idChambre),
+            'idHotel' => $idHotel,
+        );
+    }
 
     public function getChambreTable() {
         if (!$this->chambreTable) {
