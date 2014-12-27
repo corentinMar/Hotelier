@@ -13,7 +13,7 @@ Ce project requiert :
 * ZendFramework (version 2.3.*)
 * ~~Doctrine (version 2.3.0)~~
 
-L'installation peut se faire via Composer (non nécésaire car plus de Doctrine !) : 
+L'installation peut se faire via Composer (non obligatoire car plus besoin de Doctrine !) : 
 
 ### Installer Composer
 Télécharger et installer *Composer* à l'adresse suivante : https://getcomposer.org/download/
