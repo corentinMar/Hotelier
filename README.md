@@ -16,8 +16,8 @@ Ce project requiert :
 L'installation peut se faire via Composer (non obligatoire car plus besoin de Doctrine !) : 
 
 ### Installer Composer
-Télécharger et installer *Composer* à l'adresse suivante : https://getcomposer.org/download/
-(Si vous êtes sous Windows, choisissez *Windows Installer*)
+Téléchargez et installez *Composer* à l'adresse suivante : https://getcomposer.org/download/
+(si vous êtes sous Windows, choisissez *Windows Installer*)
 
 Ensuite rendez-vous dans le dossier source *hotelier/* via un terminal et tapez la commande suivante :
 ```

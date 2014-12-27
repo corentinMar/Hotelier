@@ -1,15 +1,18 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
+    "name": "zendframework/hotelier",
+    "description": "Hotel manager application",
+    "license": "Currently private & BSD-3-Clause",
     "keywords": [
         "framework",
-        "zf2"
+        "zf2",
+        "hotelier",
+        "hotel",
+        "manger",
+        "gestionnaire"
     ],
-    "homepage": "http://framework.zend.com/",
+    "homepage": "http://null",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.3.*",
-        "doctrine/common": "2.3.0"
+        "zendframework/zendframework": "2.3.*"
     }
 }
