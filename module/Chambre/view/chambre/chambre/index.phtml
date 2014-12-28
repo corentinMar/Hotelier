@@ -4,30 +4,26 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>">Ajouter une chambre</a>
+    <a href="<?php echo $this->url('chambre', array('action' => 'add')); ?>" class="Bouton">Ajouter une chambre</a>
 </p>
+<?php foreach ($chambres as $chambre) : ?>
 
-<table class="table">
-    <tr>
-        <th>Identifiant de la chambre</th>
-        <th>Identifiant de l'hôtel</th>
-        <th>Nom de la chambre</th>
-        <th>Type de la chambre</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($chambres as $chambre) : ?>
-        <tr>
-            <td><?php echo $this->escapeHtml($chambre->idChambre); ?></td>
-            <td><?php echo $this->escapeHtml($chambre->idHotel); ?></td>
-            <td><?php echo $this->escapeHtml($chambre->nomChambre); ?></td>
-            <td><?php echo $this->escapeHtml($chambre->type); ?></td>
-            <td>
-                <p>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>">Modifier</a>
-                    |
-                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>">Supprimer</a>
-                </p>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+    <div class="asideChambre">
+        <table>
+            <tr>
+                <td><img src="<?php echo $this->basePath('img/Chambres/' . rand(1, 30) . '.jpg') ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="2">
+                    <p>Identifiant de la chambre: <?php echo $this->escapeHtml($chambre->idChambre); ?></p>
+                    <p>Nom de la chambre: <?php echo $this->escapeHtml($chambre->nomChambre); ?></p>
+                    <p>Type de la chambre: <?php echo $this->escapeHtml($chambre->type); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Modifier</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php endforeach; ?>

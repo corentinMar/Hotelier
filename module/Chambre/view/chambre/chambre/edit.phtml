@@ -14,14 +14,19 @@ $form->setAttribute('action', $this->url(
                 )
 ));
 $form->prepare();
+?>
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('idHotel'));
-echo '<br />';
-echo $this->formHidden($form->get('idChambre'));
-echo $this->formRow($form->get('nomChambre'));
-echo '<br />';
-echo $this->formRow($form->get('type'));
-echo '<br />';
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<div class="asideGestion">
+    <?php
+    echo $this->form()->openTag($form);
+    echo $this->formRow($form->get('idHotel'));
+    echo '<br />';
+    echo $this->formHidden($form->get('idChambre'));
+    echo $this->formRow($form->get('nomChambre'));
+    echo '<br />';
+    echo $this->formRow($form->get('type'));
+    echo '<br />';
+    echo $this->formSubmit($form->get('submit'));
+    echo $this->form()->closeTag();
+    ?>
+</div>
