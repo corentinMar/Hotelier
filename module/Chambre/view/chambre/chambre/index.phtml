@@ -4,7 +4,7 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('chambre', array('action' => 'add')); ?>" class="Bouton">Ajouter une chambre</a>
+    <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>" class="Bouton">Ajouter une chambre</a>
 </p>
 <?php foreach ($chambres as $chambre) : ?>
 
@@ -20,8 +20,8 @@ $this->headTitle($title);
             </tr>
             <tr>
                 <td>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Modifier</a>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Supprimer</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Modifier</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Supprimer</a>
                 </td>
             </tr>
         </table>

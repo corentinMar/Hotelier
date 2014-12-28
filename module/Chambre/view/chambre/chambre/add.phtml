@@ -4,7 +4,7 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
-$form->setAttribute('action', $this->url('chambre', array('action' => 'add', 'idChambre' => $idHotel)));
+$form->setAttribute('action', $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)));
 $form->prepare();
 
 echo $this->form()->openTag($form);

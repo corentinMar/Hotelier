@@ -13,6 +13,7 @@ $this->headTitle($title);
 $url = $this->url('chambre', array(
     'action' => 'delete',
     'idHotel' => $idHotel,
+    'idChambre' => $idChambre,
         ));
 ?>
 <form action="<?php echo $url; ?>" method="post">
