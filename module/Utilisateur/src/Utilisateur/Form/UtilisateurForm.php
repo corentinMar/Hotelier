@@ -23,7 +23,7 @@ class UtilisateurForm extends Form {
             'name' => 'motDePasse',
             'type' => 'Password',
             'options' => array(
-                'label' => 'Mot de Passe : ',
+                'label' => 'Mot de passe : ',
             ),
         ));
 
@@ -31,7 +31,7 @@ class UtilisateurForm extends Form {
             'name' => 'mdp_check',
             'type' => 'Password',
             'options' => array(
-                'label' => 'Valider le mot de passe : ',
+                'label' => 'Confirmer le mot de passe : ',
             ),
         ));
 
@@ -69,7 +69,7 @@ class UtilisateurForm extends Form {
             ),
         ));
 
-        //Validateur du premier mot de passe 
+        //Validateur du premier mot de passe
         $inputFilter->add(array(
             'name' => 'motDePasse',
             'required' => true,

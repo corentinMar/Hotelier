@@ -15,8 +15,6 @@ class UtilisateurController extends AbstractActionController {
     }
 
     public function addAction() {
-
-
         // Creating html form for utilisateur insert
         $form = new UtilisateurForm();
 
@@ -35,6 +33,8 @@ class UtilisateurController extends AbstractActionController {
 
             if ($form->isValid()) {
 
+                //On vérifie que le nom n'existe pas déjà
+                //Récupérer tous les utilisateurs, et comparer leur nom
                 // Setting data on utilisateur object from form object
                 $utilisateur->exchangeArray($form->getData());
 
@@ -43,8 +43,8 @@ class UtilisateurController extends AbstractActionController {
                 // Inserting utilisateur data in the datbase table
                 $this->getUtilisateurTable()->saveUtilisateur($utilisateur);
 
-                // Redirecting to index action of utilisateur controller
-                return $this->redirect()->toRoute("utilisateur");
+                // Redirecting to index page
+                return $this->redirect()->toRoute('home');
             }
         }
 
