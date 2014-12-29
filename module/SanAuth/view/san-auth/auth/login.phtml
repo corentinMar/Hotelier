@@ -31,4 +31,9 @@ echo $this->formRow($form->get('rememberme'));
 echo '<br /><br />';
 echo $this->formRow($form->get('submit'));
 echo $this->form()->closeTag();
-?></center>
+ 
+?>
+  
+ <a href="<?php echo $this->url('utilisateur', array('action' => 'index')); ?>">Inscription</a>
+</center>
+
