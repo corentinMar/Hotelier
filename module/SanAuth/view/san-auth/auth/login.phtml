@@ -1,39 +1,37 @@
 <?php
-
- $title = 'Connexion';
- $this->headTitle($title);
- ?>
-<center><h1><?php echo $this->escapeHtml($title); ?></h1>
- <?php
-$form = $this->form;
-$form->setAttribute('action', $this->url(
-                'login/process', array(
-            'action' => 'authenticate',
-                )
-));
-$form->prepare();
-
-echo '<br />';
-if ($this->messages) {
-    foreach ($this->messages as $message) {
-        echo $message . '<br />';
-    }
-    echo '<br />';
-}
-
-echo $this->form()->openTag($form);
-//echo $this->formCollection($form);
-echo $this->formRow($form->get('username'));
-echo '<br />';
-echo $this->formRow($form->get('password'));
-echo '<br />';
-echo $this->formRow($form->get('rememberme'));
-echo '<br /><br />';
-echo $this->formRow($form->get('submit'));
-echo $this->form()->closeTag();
- 
+$title = 'Connexion';
+$this->headTitle($title);
 ?>
-  
- <a href="<?php echo $this->url('utilisateur', array('action' => 'index')); ?>">Inscription</a>
+<center><h1><?php echo $this->escapeHtml($title); ?></h1>
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+                    'login/process', array(
+                'action' => 'authenticate',
+                    )
+    ));
+    $form->prepare();
+
+    echo '<br />';
+    if ($this->messages) {
+        foreach ($this->messages as $message) {
+            echo $message . '<br />';
+        }
+        echo '<br />';
+    }
+
+    echo $this->form()->openTag($form);
+//echo $this->formCollection($form);
+    echo $this->formRow($form->get('username'));
+    echo '<br />';
+    echo $this->formRow($form->get('password'));
+    echo '<br />';
+    echo $this->formRow($form->get('rememberme'));
+    echo '<br /><br />';
+    echo $this->formRow($form->get('submit'));
+    echo $this->form()->closeTag();
+    ?>
+
+    <a href="<?php echo $this->url('login', array('action' => 'index')); ?>">Inscription</a>
 </center>
 
