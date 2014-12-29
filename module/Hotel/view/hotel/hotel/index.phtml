@@ -20,9 +20,9 @@ $this->headTitle($title);
             </tr>
             <tr>
                 <td>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'index', 'nomHotel' => $hotel->nomHotel, 'idChambre' => $hotel->idHotel)); ?>" class="Bouton">Gérer</a>
-                    <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => $hotel->idHotel)); ?>" class="Bouton">Modifier</a>
-                    <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => $hotel->idHotel)); ?>" class="Bouton">Supprimer</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'index', 'nomHotel' => $hotel->nomHotel, 'idChambre' => $hotel->idHotel)); ?>" class="btn btn-success">Gérer</a>
+                    <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Supprimer</a>
                 </td>
             </tr>
         </table>
