@@ -26,7 +26,7 @@ class Module implements AutoloaderProviderInterface {
         return array(
             'factories' => array(
                 'SanAuth\Model\MyAuthStorage' => function($sm) {
-                    return new \SanAuth\Model\MyAuthStorage('zf_tutorial');
+                    return new \SanAuth\Model\MyAuthStorage('hotelier');
                 },
                 'AuthService' => function($sm) {
                     //My assumption, you've alredy set dbAdapter

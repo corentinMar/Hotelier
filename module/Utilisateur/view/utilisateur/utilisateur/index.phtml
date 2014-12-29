@@ -1,8 +1,7 @@
 <?php
-$title = "S'inscrire";
-$this->headTitle($title);
+
+//Redirection directement vers le formualire d'ajout
+$url = $this->url('utilisateur', array('action' => 'add'));
+header("Location: $url");
+exit();
 ?>
-
-
-
-<a href="<?php echo $this->url('utilisateur',array('action'=>'add')); ?>">Nous Rejoindre</a>
