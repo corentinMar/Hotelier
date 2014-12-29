@@ -4,9 +4,13 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
-
 $form->setAttribute('action', $this->url('utilisateur', array('action' => 'add')));
 $form->prepare();
+
+if (isset($message)) {
+    echo $message . '<br />';
+    echo '<br />';
+}
 
 echo $this->form()->openTag($form);
 echo $this->formRow($form->get('nom'));

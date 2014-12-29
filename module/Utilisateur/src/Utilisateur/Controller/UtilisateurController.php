@@ -11,7 +11,7 @@ class UtilisateurController extends AbstractActionController {
     protected $utilisateurTable;
 
     public function indexAction() {
-        //   return new ViewModel();
+        //return new ViewModel();
     }
 
     public function addAction() {
@@ -33,18 +33,29 @@ class UtilisateurController extends AbstractActionController {
 
             if ($form->isValid()) {
 
-                //On vérifie que le nom n'existe pas déjà
-                //Récupérer tous les utilisateurs, et comparer leur nom
                 // Setting data on utilisateur object from form object
                 $utilisateur->exchangeArray($form->getData());
 
-                print_r($utilisateur);
-                print_r($form->getData());
-                // Inserting utilisateur data in the datbase table
-                $this->getUtilisateurTable()->saveUtilisateur($utilisateur);
+                //On vérifie que le nom n'existe pas déjà
+                $listeUtilisateurs = $this->getUtilisateurTable()->fetchAll();
+                foreach ($listeUtilisateurs as $user) {
+                    if ($utilisateur->nom == $user->nom) {
+                        $existeDeja = true;
+                    }
+                }
 
-                // Redirecting to index page
-                return $this->redirect()->toRoute('home');
+                if (!$existeDeja) {
+
+                    // Inserting utilisateur data in the datbase table
+                    $this->getUtilisateurTable()->saveUtilisateur($utilisateur);
+
+                    // Redirecting to index page
+                    return $this->redirect()->toRoute('home');
+                } else {
+                    //Le nom exsite déjà
+                    $form = new UtilisateurForm();
+                    return array('form' => $form, 'message' => 'Erreur : Le nom existe déjà.');
+                }
             }
         }
 
