@@ -6,15 +6,25 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Hotel\Model\Hotel;
 use Hotel\Form\HotelForm;
+use Application\Module;
 
 class HotelController extends AbstractActionController {
 
     protected $hotelTable;
 
     public function indexAction() {
-        return new ViewModel(array(
-            'hotels' => $this->getHotelTable()->fetchAll(),
-        ));
+        //L'utilisateur est admin ou non ?
+        if (Module::$utilisateur->administrateur) {
+            //Admin
+            return new ViewModel(array(
+                'hotels' => $this->getHotelTable()->fetchAll(),
+            ));
+        } else {
+            //Non admin
+            return new ViewModel(array(
+                'hotels' => $this->getHotelTable()->getListeHotel(Module::$utilisateur->id),
+            ));
+        }
     }
 
     // Add content to this method:
@@ -39,74 +49,71 @@ class HotelController extends AbstractActionController {
         return array('form' => $form);
     }
 
-    public function editAction()
-     {
-         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
-         if (!$idHotel) {
-             return $this->redirect()->toRoute('hotel', array(
-                 'action' => 'add'
-             ));
-         }
+    public function editAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        if (!$idHotel) {
+            return $this->redirect()->toRoute('hotel', array(
+                        'action' => 'add'
+            ));
+        }
 
-         // Get the Hotel with the specified id.  An exception is thrown
-         // if it cannot be found, in which case go to the index page.
-         try {
-             $hotel = $this->getHotelTable()->getHotel($idHotel);
-         }
-         catch (\Exception $ex) {
-             return $this->redirect()->toRoute('hotel', array(
-                 'action' => 'index'
-             ));
-         }
+        // Get the Hotel with the specified id.  An exception is thrown
+        // if it cannot be found, in which case go to the index page.
+        try {
+            $hotel = $this->getHotelTable()->getHotel($idHotel);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('hotel', array(
+                        'action' => 'index'
+            ));
+        }
 
-         $form = new HotelForm();
-         $form->bind($hotel);
-         $form->get('submit')->setAttribute('value', 'Modifier');
-        
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $form->setInputFilter($hotel->getInputFilter());
-             $form->setData($request->getPost());
+        $form = new HotelForm();
+        $form->bind($hotel);
+        $form->get('submit')->setAttribute('value', 'Modifier');
 
-             if ($form->isValid()) {
-                 $this->getHotelTable()->saveHotel($hotel);
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($hotel->getInputFilter());
+            $form->setData($request->getPost());
 
-                 // Redirect to list of hotels
-                 return $this->redirect()->toRoute('hotel');
-             }
-         }
+            if ($form->isValid()) {
+                $this->getHotelTable()->saveHotel($hotel);
 
-         return array(
-             'idHotel' => $idHotel,
-             'form' => $form,
-         );
-     }
+                // Redirect to list of hotels
+                return $this->redirect()->toRoute('hotel');
+            }
+        }
 
-     public function deleteAction()
-     {
-         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
-         if (!$idHotel) {
-             return $this->redirect()->toRoute('hotel');
-         }
+        return array(
+            'idHotel' => $idHotel,
+            'form' => $form,
+        );
+    }
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $del = $request->getPost('del', 'Non');
+    public function deleteAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        if (!$idHotel) {
+            return $this->redirect()->toRoute('hotel');
+        }
 
-             if ($del == 'Oui') {
-                 $idHotel = (int) $request->getPost('idHotel');
-                 $this->getHotelTable()->deleteHotel($idHotel);
-             }
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'Non');
 
-             // Redirect to list of hotels
-             return $this->redirect()->toRoute('hotel');
-         }
+            if ($del == 'Oui') {
+                $idHotel = (int) $request->getPost('idHotel');
+                $this->getHotelTable()->deleteHotel($idHotel);
+            }
 
-         return array(
-             'idHotel' => $idHotel,
-             'hotel' => $this->getHotelTable()->getHotel($idHotel)
-         );
-     }
+            // Redirect to list of hotels
+            return $this->redirect()->toRoute('hotel');
+        }
+
+        return array(
+            'idHotel' => $idHotel,
+            'hotel' => $this->getHotelTable()->getHotel($idHotel)
+        );
+    }
 
     public function getHotelTable() {
         if (!$this->hotelTable) {

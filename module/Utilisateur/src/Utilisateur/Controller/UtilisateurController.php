@@ -37,6 +37,7 @@ class UtilisateurController extends AbstractActionController {
                 $utilisateur->exchangeArray($form->getData());
 
                 //On vérifie que le nom n'existe pas déjà
+                $existeDeja = false;
                 $listeUtilisateurs = $this->getUtilisateurTable()->fetchAll();
                 foreach ($listeUtilisateurs as $user) {
                     if ($utilisateur->nom == $user->nom) {

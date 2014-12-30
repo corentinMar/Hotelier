@@ -10,6 +10,7 @@ class AuthController extends AbstractActionController {
     protected $form;
     protected $storage;
     protected $authservice;
+    protected $sanAuthTable;
 
     public function getAuthService() {
         if (!$this->authservice) {
@@ -38,7 +39,7 @@ class AuthController extends AbstractActionController {
     }
 
     public function loginAction() {
-        //if already login, redirect to success page 
+        //if already login, redirect to success page
         if ($this->getAuthService()->hasIdentity()) {
             return $this->redirect()->toRoute('success');
         }
@@ -47,7 +48,7 @@ class AuthController extends AbstractActionController {
 
         return array(
             'form' => $form,
-            'messages' => $this->flashmessenger()->getMessages()
+            'messages' => $this->flashmessenger()->getMessages(),
         );
     }
 
@@ -76,10 +77,10 @@ class AuthController extends AbstractActionController {
                     if ($request->getPost('rememberme') == 1) {
                         $this->getSessionStorage()
                                 ->setRememberMe(1);
-                        //set storage again 
+                        //set storage again
                         $this->getAuthService()->setStorage($this->getSessionStorage());
                     }
-                    $this->getAuthService()->getStorage()->write($request->getPost('username'));
+                    $this->getAuthService()->getStorage()->write($this->getUtilisateur($request->getPost('username')));
                 }
             } else {
                 $this->flashmessenger()->addMessage("Erreur : Nom ou Mot de passe incorrect !");
@@ -100,4 +101,17 @@ class AuthController extends AbstractActionController {
         }
         return $this->redirect()->toRoute('login');
     }
+
+    public function getUtilisateur($nom) {
+        return $this->getSanAuthTable()->getUtilisateur($nom);
+    }
+
+    public function getSanAuthTable() {
+        if (!$this->sanAuthTable) {
+            $sm = $this->getServiceLocator();
+            $this->sanAuthTable = $sm->get('SanAuth\Model\SanAuthTable');
+        }
+        return $this->sanAuthTable;
+    }
+
 }

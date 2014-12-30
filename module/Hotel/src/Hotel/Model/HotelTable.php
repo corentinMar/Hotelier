@@ -27,6 +27,14 @@ class HotelTable {
         return $row;
     }
 
+    public function getListeHotel($idUtilisateur) {
+        $rowset = $this->tableGateway->select(array('idAdministrateur' => $idUtilisateur));
+        if (!$rowset) {
+            throw new \Exception("Impossible de trouver la ligne $idUtilisateur");
+        }
+        return $rowset;
+    }
+
     public function saveHotel(Hotel $hotel) {
         $data = array(
             'idHotel' => $hotel->idHotel,

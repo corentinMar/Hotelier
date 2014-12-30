@@ -1,44 +1,46 @@
-<center><div class="jumbotron">
-    <h1>Bienvenue sur <span class="zf-green">Hôtelier</span></h1>
-    <p>Le gestionnaire d'hôtels <strong>Hôtelier</strong> va vous permettre de créer des hôtels et d'étendre votre empire hôtelier.</p>
-    <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('hotel') ?>">Voir mes hôtels &raquo;</a></p>
-</div>
+<?php
 
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Ajouter un hôtel</h3>
-            </div>
-            <div class="panel-body">
-                <p>Vous pouvez aussi ajouter un nouvel hôtel à votre gestionnaire. Pour cela il vous suffit de cliquer sur le bouton ci-dessous.</p>
-                <p><a class="btn btn-success pull-right" href="<?php echo $this->url('hotel', array('action'=>'add'));?>">Ajouter un hôtel &raquo;</a></p>
-            </div>
-        </div>
+use Application\Module; ?><center><div class="jumbotron">
+        <h1>Bienvenue <strong class="zf-green"><?php echo ucfirst(Module::$utilisateur->nom); ?></strong></h1>
+        <p>Le gestionnaire d'hôtels <strong>Hôtelier</strong> va vous permettre de créer des hôtels et d'étendre votre empire hôtelier.</p>
+        <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('hotel') ?>">Voir mes hôtels &raquo;</a></p>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Une autre chose</h3>
-            </div>
-            <div class="panel-body">
-                <p>Une autre chose</p>
-                <p><a class="btn btn-success pull-right" href="">Une autre chose &raquo;</a></p>
-            </div>
-        </div>
-    </div>
+    <div class="row">
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Se déconnecter</h3>
-            </div>
-            <div class="panel-body">
-                <p>Si vous souhaitez quitter le gestionnaire d'hôtels <strong>Hôtelier</strong>, pensez à vous déconnecter.</p>
-                <p><a class="btn btn-success pull-right" href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>">Déconnexion &raquo;</a></p>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ajouter un hôtel</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Vous pouvez aussi ajouter un nouvel hôtel à votre gestionnaire. Pour cela il vous suffit de cliquer sur le bouton ci-dessous.</p>
+                    <p><a class="btn btn-success pull-right" href="<?php echo $this->url('hotel', array('action' => 'add')); ?>">Ajouter un hôtel &raquo;</a></p>
+                </div>
             </div>
         </div>
-    </div>
-</div></center>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Une autre chose</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Une autre chose</p>
+                    <p><a class="btn btn-success pull-right" href="">Une autre chose &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Se déconnecter</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Si vous souhaitez quitter le gestionnaire d'hôtels <strong>Hôtelier</strong>, pensez à vous déconnecter.</p>
+                    <p><a class="btn btn-success pull-right" href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>">Déconnexion &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+    </div></center>

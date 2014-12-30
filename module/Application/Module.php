@@ -17,6 +17,7 @@ use Zend\Mvc\Router\Http\RouteMatch;
 class Module {
 
     protected $whitelist = array('login', 'login/process', 'utilisateur', 'utilisateur/add');
+    public static $utilisateur = 0;
 
     public function onBootstrap(MvcEvent $e) {
 
@@ -39,16 +40,19 @@ class Module {
                 // Route is whitelisted
                 $name = $match->getMatchedRouteName();
                 if (in_array($name, $list)) {
+                    Module::$utilisateur = 0;
                     return;
                 } else {
                     // User is authenticated
                     if ($auth->hasIdentity()) {
+                        Module::$utilisateur = $auth->getIdentity();
                         return;
                     } else {
+                        Module::$utilisateur = 0;
                         // Redirect to the user login page, as an example
                         $router = $e->getRouter();
                         $url = $router->assemble(array(), array(
-                            'name' => 'login'
+                            'name' => 'login',
                         ));
                         $response = $e->getResponse();
                         $response->getHeaders()->addHeaderLine('Location', $url);
