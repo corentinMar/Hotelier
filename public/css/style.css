@@ -4,6 +4,11 @@
 *******************************************
 ******************************************/
 
+.log{
+    width: 100px;
+    margin-top: -28px;
+}
+
 .infos{
     float: right;
     text-align: right;
@@ -132,6 +137,7 @@ input[type="text"], input[type="number"], input[type="password"]{
 
 .zf-green {
     color: #228B22;
+    
 }
 
 .navbar{

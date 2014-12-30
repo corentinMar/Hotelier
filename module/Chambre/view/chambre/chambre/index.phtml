@@ -12,7 +12,7 @@ $this->headTitle($title);
 
     <div class="asideChambre">
         <table>
-            <tr>
+            <tr> 
                 <td><img src="<?php $b=1+$this->escapeHtml($chambre->idChambre)%30; echo $this->basePath('img/Chambres/' . $b  . '.jpg') ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="2">
                     <p>Identifiant de la chambre: <?php echo $this->escapeHtml($chambre->idChambre); ?></p>
