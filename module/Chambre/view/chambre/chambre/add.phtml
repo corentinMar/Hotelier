@@ -6,23 +6,15 @@ $this->headTitle($title);
 <?php
 $form->setAttribute('action', $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)));
 $form->prepare();
-?>
 
-<div class="asideGestion">
-    <?php
-    echo $this->form()->openTag($form);
-    echo $this->formHidden($form->get('idChambre'));
-    echo '<br />';
-    echo $this->formHidden($form->get('idHotel'));
-    echo '<br />';
-    echo $this->formRow($form->get('nomChambre'));
-    echo '<br />';
-    echo $this->formRow($form->get('type'));
-    echo '<br />';
-    //echo $this->formSubmit($form->get('submit'));
-    ?>
-    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Ajouter" />
-    <?php
-    echo $this->form()->closeTag();
-    ?>
-</div>
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('idChambre'));
+echo '<br />';
+echo $this->formHidden($form->get('idHotel'));
+echo '<br />';
+echo $this->formRow($form->get('nomChambre'));
+echo '<br />';
+echo $this->formRow($form->get('type'));
+echo '<br />';
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

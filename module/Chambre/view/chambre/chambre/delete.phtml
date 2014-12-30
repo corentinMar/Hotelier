@@ -3,24 +3,23 @@ $title = 'Supprimer une chambre';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-<div  class="asideGestion">
-    <p>Êtes vous sûr de supprimer la chambre n°
-        <strong><?php echo $this->escapeHtml($chambre->idChambre); ?></strong>
-        (<strong><?php echo $this->escapeHtml($chambre->nomChambre); ?></strong>)
-        de l'hôtel n° <strong><?php echo $this->escapeHtml($chambre->idHotel); ?></strong> ?
-    </p>
-    <?php
-    $url = $this->url('chambre', array(
-        'action' => 'delete',
-        'idHotel' => $idHotel,
-        'idChambre' => $idChambre,
-    ));
-    ?>
-    <form action="<?php echo $url; ?>" method="post">
-        <div>
-            <input type="hidden" name="idChambre" value="<?php echo (int) $chambre->idChambre; ?>" />
-            <input class="btn btn-success" type="submit" name="del" value="Oui" />
-            <input class="btn btn-success" type="submit" name="del" value="Non" />
-        </div>
-    </form>
-</div>
+
+<p>Êtes vous sûr de supprimer la chambre n°
+    <strong><?php echo $this->escapeHtml($chambre->idChambre); ?></strong>
+    (<strong><?php echo $this->escapeHtml($chambre->nomChambre); ?></strong>)
+    de l'hôtel n° <strong><?php echo $this->escapeHtml($chambre->idHotel); ?></strong> ?
+</p>
+<?php
+$url = $this->url('chambre', array(
+    'action' => 'delete',
+    'idHotel' => $idHotel,
+    'idChambre' => $idChambre,
+        ));
+?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="idChambre" value="<?php echo (int) $chambre->idChambre; ?>" />
+        <input type="submit" name="del" value="Oui" />
+        <input type="submit" name="del" value="Non" />
+    </div>
+</form>

@@ -26,10 +26,7 @@ $form->prepare();
     echo '<br />';
     echo $this->formRow($form->get('type'));
     echo '<br />';
-    //echo $this->formSubmit($form->get('submit'));
-    ?>
-    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />
-    <?php
+    echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();
-    ?>    
+    ?>
 </div>

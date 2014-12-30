@@ -4,14 +4,14 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('hotel', array('action' => 'add')); ?>" class="btn btn-success">Ajouter un hôtel</a>
+    <a href="<?php echo $this->url('hotel', array('action' => 'add')); ?>" class="Bouton">Ajouter un hôtel</a>
 </p>
 
 <?php foreach ($hotels as $hotel) : ?>
     <div class="asideHotel">
         <table>
             <tr>
-                <td><img src="<?php $b=$this->escapeHtml($hotel->idHotel)%30; echo $this->basePath('img/Hotel/' . $b . '.jpg') ?>" alt="Zend Framework 2" class="imgHotel"/></td>
+                <td><img src="<?php echo $this->basePath('img/' . rand(1, 4) . '.jpg') ?>" alt="Zend Framework 2" class="imgHotel"/></td>
                 <td class="Hotel" rowspan="2">
                     <p>Identifiant de l'hôtel: <?php echo $this->escapeHtml($hotel->idHotel); ?></p>
                     <p>Nom de l'hôtel: <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
