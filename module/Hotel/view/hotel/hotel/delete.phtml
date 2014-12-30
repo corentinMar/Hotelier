@@ -1,24 +1,25 @@
 <?php
+$title = 'Supprimer un hôtel';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div  class="asideGestion">
 
- $title = 'Supprimer un hôtel';
- $this->headTitle($title);
- ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
-
- <p>Êtes vous sûr de supprimer l'hôtel 
-     <strong><?php echo $this->escapeHtml($hotel->nomHotel); ?></strong> de
-     <strong><?php echo $this->escapeHtml($hotel->idAdministrateur); ?></strong> ?
- </p>
- <?php
- $url = $this->url('hotel', array(
-     'action' => 'delete',
-     'idHotel' => $this->idHotel,
- ));
- ?>
- <form action="<?php echo $url; ?>" method="post">
- <div>
-     <input type="hidden" name="idHotel" value="<?php echo (int) $hotel->idHotel; ?>" />
-     <input type="submit" name="del" value="Oui" />
-     <input type="submit" name="del" value="Non" />
- </div>
- </form>
+    <p>Êtes vous sûr de supprimer l'hôtel 
+        <strong><?php echo $this->escapeHtml($hotel->nomHotel); ?></strong> de
+        <strong><?php echo $this->escapeHtml($hotel->idAdministrateur); ?></strong> ?
+    </p>
+    <?php
+    $url = $this->url('hotel', array(
+        'action' => 'delete',
+        'idHotel' => $this->idHotel,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input  type="hidden" name="idHotel" value="<?php echo (int) $hotel->idHotel; ?>" />
+            <input class="btn btn-success" type="submit" name="del" value="Oui" />
+            <input class="btn btn-success" type="submit" name="del" value="Non" />
+        </div>
+    </form>
+</div>

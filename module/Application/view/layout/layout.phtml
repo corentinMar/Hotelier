@@ -48,10 +48,10 @@ echo $this->doctype();
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <?php if (Module::$utilisateur) { ?><li><a href = "<?php echo $this->url('application') ?>"><?php echo $this->translate('Accueil') ?></a></li><?php } ?>
                         <?php if (Module::$utilisateur) { ?><li><a href="<?php echo $this->url('hotel') ?>"><?php echo $this->translate('Mes Hôtels') ?></a></li><?php } ?>
-                        <?php if (Module::$utilisateur) { ?><li><a href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>">Déconnexion</a></li><?php } ?>
-                        <?php if (Module::$utilisateur) { ?><li><i>Connecté en tant que <strong><?php echo Module::$utilisateur->nom; ?></strong></i></li><?php } ?>
                     </ul>
+                    <?php if (Module::$utilisateur) { ?><div class="infos">Connecté en tant que <strong><?php echo Module::$utilisateur->nom; ?></strong> - <a href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>" class="deco">Déconnexion</a></div><?php } ?>
                 </div>
             </div>
         </nav>
