@@ -2,22 +2,30 @@
 $title = "S'inscrire";
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<center><h1><?php echo $this->escapeHtml($title); ?></h1></center>
 <?php
 $form->setAttribute('action', $this->url('utilisateur', array('action' => 'add')));
 $form->prepare();
+?>
+<div class="asideGestion">
+    <?php
+    if (isset($message)) {
+        echo $message . '<br />';
+        echo '<br />';
+    }
 
-if (isset($message)) {
-    echo $message . '<br />';
+    echo $this->form()->openTag($form);
+    echo $this->formRow($form->get('nom'));
     echo '<br />';
-}
-
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('nom'));
-echo '<br />';
-echo $this->formRow($form->get('motDePasse'));
-echo '<br />';
-echo $this->formRow($form->get('mdp_check'));
-echo '<br />';
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+    echo $this->formRow($form->get('motDePasse'));
+    echo '<br />';
+    echo $this->formRow($form->get('mdp_check'));
+    echo '<br />';
+    //echo $this->formSubmit($form->get('submit'));
+    ?>
+    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="S'inscrire" />
+    <a href="<?php echo $this->url('login'); ?>" class="btn btn-success">Annuler</a>
+    <?php
+    echo $this->form()->closeTag();
+    ?>
+</div>

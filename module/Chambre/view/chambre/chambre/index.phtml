@@ -4,14 +4,16 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>" class="Bouton">Ajouter une chambre</a>
+    <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>" class="btn btn-success">Ajouter une chambre</a>
+    <a href="<?php echo $this->url('hotel'); ?>" class="btn btn-success">Retour</a>
+
 </p>
 <?php foreach ($chambres as $chambre) : ?>
 
     <div class="asideChambre">
         <table>
             <tr>
-                <td><img src="<?php echo $this->basePath('img/Chambres/' . rand(1, 30) . '.jpg') ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td><img src="<?php $b=1+$this->escapeHtml($chambre->idChambre)%30; echo $this->basePath('img/Chambres/' . $b  . '.jpg') ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="2">
                     <p>Identifiant de la chambre: <?php echo $this->escapeHtml($chambre->idChambre); ?></p>
                     <p>Nom de la chambre: <?php echo $this->escapeHtml($chambre->nomChambre); ?></p>
@@ -20,8 +22,8 @@ $this->headTitle($title);
             </tr>
             <tr>
                 <td>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Modifier</a>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="Bouton">Supprimer</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Supprimer</a>
                 </td>
             </tr>
         </table>

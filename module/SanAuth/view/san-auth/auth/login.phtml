@@ -2,7 +2,7 @@
 $title = 'Connexion';
 $this->headTitle($title);
 ?>
-<center><h1><?php echo $this->escapeHtml($title); ?></h1>
+<center><h1><?php echo $this->escapeHtml($title); ?></h1></center>
     <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url(
@@ -11,7 +11,10 @@ $this->headTitle($title);
                     )
     ));
     $form->prepare();
-
+?>
+    
+<div class="asideGestion">
+     <?php
     echo '<br />';
     if ($this->messages) {
         foreach ($this->messages as $message) {
@@ -27,11 +30,14 @@ $this->headTitle($title);
     echo $this->formRow($form->get('password'));
     echo '<br />';
     echo $this->formRow($form->get('rememberme'));
-    echo '<br /><br />';
-    echo $this->formRow($form->get('submit'));
+    echo '<br />';
+    //echo $this->formRow($form->get('submit'));
+    ?>
+    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Se connecter" />
+    <?php
     echo $this->form()->closeTag();
     ?>
     <br />
-    <p>Pas encore membre ? <a href="<?php echo $this->url('utilisateur', array('action' => 'index')); ?>">Inscription</a></p>
-</center>
+    <p>Pas encore membre ? <a href="<?php echo $this->url('utilisateur', array('action' => 'index')); ?>" class="btn btn-success">Inscription</a></p>
+</div>
 
