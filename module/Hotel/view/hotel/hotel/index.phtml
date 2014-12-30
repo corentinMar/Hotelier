@@ -11,7 +11,10 @@ $this->headTitle($title);
     <div class="asideHotel">
         <table>
             <tr>
-                <td><img src="<?php $b=$this->escapeHtml($hotel->idHotel)%30; echo $this->basePath('img/Hotel/' . $b . '.jpg') ?>" alt="Zend Framework 2" class="imgHotel"/></td>
+                <td><img src="<?php
+                    $b = $this->escapeHtml($hotel->idHotel) % 30;
+                    echo $this->basePath('img/Hotel/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgHotel"/></td>
                 <td class="Hotel" rowspan="2">
                     <p>Identifiant de l'hôtel: <?php echo $this->escapeHtml($hotel->idHotel); ?></p>
                     <p>Nom de l'hôtel: <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
@@ -20,7 +23,7 @@ $this->headTitle($title);
             </tr>
             <tr>
                 <td>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'index', 'nomHotel' => $hotel->nomHotel, 'idChambre' => $hotel->idHotel)); ?>" class="btn btn-success">Gérer</a>
+                    <a href="<?php echo $this->url('chambre', array('action' => 'index', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Gérer</a>
                     <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Modifier</a>
                     <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Supprimer</a>
                 </td>
