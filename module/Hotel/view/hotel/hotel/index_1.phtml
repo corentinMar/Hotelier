@@ -7,25 +7,30 @@ $this->headTitle($title);
     <a href="<?php echo $this->url('hotel', array('action' => 'add')); ?>" class="btn btn-success">Ajouter un hôtel</a>
 </p>
 
+<a href="#" class="bulle">Passe ta souris ici !
+
+<span>
+<h1>Lorem ipsum dolor sit amet</h1>
+Lorem ipsum dolor sit laoreet mollis, dolor. Suspendisse porta. amet, consectetuer adipiscing elit. Etiam consequat.
+Nulla mattis faucibus nisi. Morbi pede nunc, laoreet non, rhoncus quis,
+laoreet mollis, dolor. Suspendisse porta.
+</span>
+
+</a>
+
 
 <?php foreach ($hotels as $hotel) : ?>
     <div class="asideHotel">
         <table>
             <tr>
-                <td>
-                    <div class="bulle">
-                        <img src="<?php
-                        $b = $this->escapeHtml($hotel->idHotel) % 30;
-                        echo $this->basePath('img/Hotel/' . $b . '.jpg')
-                        ?>" alt="Zend Framework 2" class="imgHotel"/>
-                        <span class="Hotel">
-                            <p>Identifiant de l'hôtel: <?php echo $this->escapeHtml($hotel->idHotel); ?></p>
-                            <p>Nom de l'hôtel: <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
-                            <p>Identifiant de l'administrateur: <?php echo $this->escapeHtml($hotel->idAdministrateur); ?></p>
-                        </span>
-                        <p class="nomHotel">© <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
-                    </div>
-                    
+                <td><img src="<?php
+                    $b = $this->escapeHtml($hotel->idHotel) % 30;
+                    echo $this->basePath('img/Hotel/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgHotel"/></td>
+                <td class="Hotel" rowspan="2">
+                    <p>Identifiant de l'hôtel: <?php echo $this->escapeHtml($hotel->idHotel); ?></p>
+                    <p>Nom de l'hôtel: <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
+                    <p>Identifiant de l'administrateur: <?php echo $this->escapeHtml($hotel->idAdministrateur); ?></p>
                 </td>
             </tr>
             <tr>
