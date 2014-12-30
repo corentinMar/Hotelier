@@ -313,6 +313,15 @@ p.nomHotel{
     font-size: 10px;
 }
 
+p.sourisHotel{
+    position:relative;
+    margin-top: -15px;
+    color: #000000;
+    text-shadow: 0 1px 5px #000000;
+    text-align: center; 
+    font-size: 10px;
+}
+
 /******************************************
 *******************************************
 **********Gestion (Add, Edit...)***********
@@ -335,3 +344,4 @@ p.nomHotel{
     font-size: 16px;
     margin-left: 22%;
 }
+
