@@ -154,8 +154,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `motDePasse`, `administrateur`) VALUES
-(1, 'admin', 'admin', 1),
-(2, 'test', 'test', 0);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 0);
 
 --
 -- Index pour les tables exportées

@@ -17,13 +17,22 @@ class UtilisateurTable {
         return $resultSet;
     }
 
-    public function saveUtilisateur(Utilisateur $utilisateur) {
+     public function saveUtilisateur(Utilisateur $utilisateur) {
+        $password = md5($utilisateur->motDePasse);
+        //blowfish
+       // $bcrypt = new Bcrypt();
+       // $crypt_password = $bcrypt->create($utilisateur->motDePasse);
+
+
+
+     
         $data = array(
-            'nom' => $utilisateur->nom ,
-            'motDePasse' => $utilisateur->motDePasse,
+            'nom' => $utilisateur->nom,
+            'motDePasse' => $password,
         );
 
         $this->tableGateway->insert($data);
     }
+
 
 }

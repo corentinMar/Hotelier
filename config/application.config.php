@@ -6,6 +6,7 @@ return array(
         'SanAuth',
         'Hotel',
         'Chambre',
+        'Extra',
         'Utilisateur',
     ),
     'module_listener_options' => array(

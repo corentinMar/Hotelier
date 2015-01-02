@@ -1,0 +1,26 @@
+<?php
+$title = 'Ajouter une Television';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)));
+$form->prepare();
+?>
+
+<div class="asideGestion">
+    <?php
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('idChambre'));
+    echo '<br />';
+    echo $this->formHidden($form->get('idTelevision'));
+    echo '<br />';
+    echo $this->formRow($form->get('prixTelevision'));
+    echo '<br />';
+ 
+    ?>
+    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Ajouter" />
+    <?php
+    echo $this->form()->closeTag();
+    ?>
+</div>

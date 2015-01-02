@@ -63,7 +63,8 @@ class AuthController extends AbstractActionController {
                 //check authentication...
                 $this->getAuthService()->getAdapter()
                         ->setIdentity($request->getPost('username'))
-                        ->setCredential($request->getPost('password'));
+                        ->setCredential($request->getPost('password'))
+                        ->setCredentialTreatment('MD5(?)'); //for md5;
 
                 $result = $this->getAuthService()->authenticate();
                 foreach ($result->getMessages() as $message) {

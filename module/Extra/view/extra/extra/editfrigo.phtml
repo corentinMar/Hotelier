@@ -1,0 +1,28 @@
+<?php
+$title = 'Modifier une frigo';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+
+$form->setAttribute('action', $this->url('extra', array('action' => 'editfrigo', 'idChambre' => $this->idChambre, 'idDouche' => $this->idFrigo)));
+$form->prepare();
+?>
+
+<div class="asideGestion">
+    <?php
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('idChambre'));
+    echo '<br />';
+    echo $this->formHidden($form->get('idFrigo'));
+    echo '<br />';
+    echo $this->formRow($form->get('prixFrigo'));
+    echo '<br />';
+    ?>
+    <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />
+    <?php
+    echo $this->form()->closeTag();
+    ?>    
+</div>

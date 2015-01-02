@@ -1,0 +1,105 @@
+<?php
+$title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idChambre);
+;
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+
+
+<?php if ($douche != null): //DOUCHE ?>
+    <div class="asideChambre">
+        <p><strong>Douche</strong></p>
+        <table>
+            <tr> 
+                <td><img src="<?php
+                    $b = rand(1, 3);
+                    echo $this->basePath('img/Douches/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="2">
+                    <p>Identifiant de la douche: <?php echo $this->escapeHtml($douche->idDouche); ?></p>
+                    <p>Prix: <?php echo $this->escapeHtml($douche->prixDouche); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'editdouche', 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'douchedelete', 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>Pas de Douche</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'adddouche', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>
+
+
+
+<?php if ($television != null): //TELEVISION?>
+    <div class="asideChambre">
+        <p><strong>Television</strong></p>
+        <table>
+            <tr> 
+                <td><img src="<?php
+                    $b = rand(1, 3);
+                    echo $this->basePath('img/Televisions/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="2">
+                    <p>Identifiant de la television: <?php echo $this->escapeHtml($television->idTelevision); ?></p>
+                    <p>Prix: <?php echo $this->escapeHtml($television->prixTelevision); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'edittelevision', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'televisiondelete', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>Pas de Television</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>
+
+
+
+<?php if ($frigo != null): //FRIGO?>
+    <div class="asideChambre">
+        <p><strong>Frigo</strong></p>
+        <table>
+            <tr> 
+                <td><img src="<?php
+                    $b = rand(1, 3);
+
+                    echo $this->basePath('img/Frigos/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="2">
+                    <p>Identifiant du frigo: <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
+                    <p>Prix: <?php echo $this->escapeHtml($frigo->prixFrigo); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'editfrigo', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'frigodelete', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>pas de Frigo</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>
+

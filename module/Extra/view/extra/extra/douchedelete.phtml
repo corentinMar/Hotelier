@@ -1,0 +1,28 @@
+<?php
+$title = 'Supprimer une douche';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<div  class="asideGestion">
+    <p>Êtes vous sûr de supprimer la douche n°
+        <strong><?php echo $this->escapeHtml($idDouche); ?></strong>
+        de la chambre n° <strong><?php echo $this->escapeHtml($idChambre); ?></strong> ?
+    </p>
+    <?php
+    $url = $this->url('extra', array(
+        'action' => 'douchedelete',
+        'idChambre' => $idChambre,
+        'idDouche' => $idDouche,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input type="hidden" name="idDouche" value="<?php echo (int) $douche->idDouche; ?>" />
+            <input class="btn btn-success" type="submit" name="del" value="Oui" />
+            <input class="btn btn-success" type="submit" name="del" value="Non" />
+        </div>
+    </form>
+</div>
+

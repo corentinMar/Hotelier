@@ -1,0 +1,28 @@
+<?php
+$title = 'Supprimer un frigo';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<div  class="asideGestion">
+    <p>Êtes vous sûr de supprimer le frigo n°
+        <strong><?php echo $this->escapeHtml($idFrigo); ?></strong>
+        de la chambre n° <strong><?php echo $this->escapeHtml($idChambre); ?></strong> ?
+    </p>
+    <?php
+    $url = $this->url('extra', array(
+        'action' => 'frigodelete',
+        'idChambre' => $idChambre,
+        'idDouche' => $idFrigo,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input type="hidden" name="idFrigo" value="<?php echo (int) $frigo->idFrigo; ?>" />
+            <input class="btn btn-success" type="submit" name="del" value="Oui" />
+            <input class="btn btn-success" type="submit" name="del" value="Non" />
+        </div>
+    </form>
+</div>
+
