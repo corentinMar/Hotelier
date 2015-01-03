@@ -218,7 +218,7 @@ input[type="text"], input[type="number"], input[type="password"]{
 {
     display: inline-block;
     vertical-align: top;
-    text-align: left;
+    text-align: center;
     position: relative;
     width: 48%;
     height: 50%;
@@ -238,6 +238,17 @@ input[type="text"], input[type="number"], input[type="password"]{
     height: 150px;
 }
 
+.boutonGauche{
+    float : left;
+}
+
+p.prixTotalChambre{
+    position:relative;
+    margin-top: -15px;
+    color: #000000;
+    text-align: center; 
+    font-size: 18px;
+}
 
 /******************************************
 *******************************************

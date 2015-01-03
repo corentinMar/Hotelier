@@ -3,8 +3,25 @@ $title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-<br/>
-
+<br />
+<?php
+//Calcul prix de la chambre
+$total = 0;
+if ($douche != null) {
+    $total += $douche->prixDouche;
+}
+if ($baignoire != null) {
+    $total += $baignoire->prixBaignoire;
+}
+if ($television != null) {
+    $total += $television->prixTelevision;
+}
+if ($frigo != null) {
+    $total += $frigo->prixFrigo;
+}
+?>
+<center><p class="prixTotalChambre">Prix de la chambre : <strong><?php echo $total; ?> €</strong></p></center>
+<br />
 <?php
 /* * ****************************************
  * *******VUE DOUCHE**********
@@ -20,7 +37,7 @@ if ($douche != null):
                     echo $this->basePath('img/Douches/' . (1 + $douche->idDouche % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la douche : <?php echo $this->escapeHtml($douche->idDouche); ?></p>
+                    <p>Douche n°<?php echo $this->escapeHtml($douche->idDouche); ?></p>
 
                 </td>
             </tr>
@@ -55,7 +72,7 @@ if ($baignoire != null): //si baignoire déja ajoutée
                     echo $this->basePath('img/Baignoires/' . (1 + $baignoire->idBaignoire % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la baignoire : <?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
+                    <p>Baignoire n°<?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
                 </td>
             </tr>
             <tr>
@@ -89,7 +106,7 @@ if ($television != null): //TELEVISION
                     echo $this->basePath('img/Televisions/' . (1 + $television->idTelevision % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la television : <?php echo $this->escapeHtml($television->idTelevision); ?></p>
+                    <p>Television n°<?php echo $this->escapeHtml($television->idTelevision); ?></p>
                 </td>
             </tr>
             <tr>
@@ -123,7 +140,7 @@ if ($frigo != null): //si un frigo est déja ajouté
                     echo $this->basePath('img/Frigos/' . (1 + $frigo->idFrigo % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant du frigo : <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
+                    <p>Frigo n°<?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
                 </td>
             </tr>
             <tr>
