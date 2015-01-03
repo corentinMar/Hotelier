@@ -24,7 +24,7 @@ Ensuite rendez-vous dans le dossier source *hotelier/* via un terminal et tapez 
 composer install
 ```
 
-Puis via PhpMyAdmin, exécutez le script situé dans le dossier source *hotelier/hotelier.sql*
+Puis via PhpMyAdmin, créez un base nommée 'hotelier' et exécutez le script situé dans le dossier source *hotelier/hotelier.sql*
 
 Si besoin, pour modifier le répertoire où seront écrit les logs, modifiez la ligne 29 située dans *hotelier/config/autoload/global.php*
 
