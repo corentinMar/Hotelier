@@ -14,11 +14,19 @@ $this->headTitle($title);
             <table>
                 <tr>
                     <td>
+                        <a href="<?php echo $this->url('chambre', array('action' => 'index', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Gérer</a>
+                        <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Modifier</a>
+                        <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Supprimer</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <div class="bulle">
                             <img src="<?php
                             $b = $this->escapeHtml($hotel->idHotel) % 30;
                             echo $this->basePath('img/Hotel/' . $b . '.jpg')
-                            ?>" alt="Zend Framework 2" class="imgHotel"/>
+                            ?>" alt="Image hôtel" class="imgHotel"/>
+                            
                             <span class="Hotel">
                                 <p>Hôtel n°<?php echo $this->escapeHtml($hotel->idHotel); ?></p>
                                 <p><i><?php echo $this->escapeHtml($hotel->nomHotel); ?></i></p>
@@ -27,14 +35,7 @@ $this->headTitle($title);
                             <p class="nomHotel">© <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
                         </div>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="<?php echo $this->url('chambre', array('action' => 'index', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Gérer</a>
-                        <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Modifier</a>
-                        <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => $hotel->idHotel)); ?>" class="btn btn-success">Supprimer</a>
-                    </td>
-                </tr>
+                </tr>               
             </table>
         </div>
     <?php endforeach; ?>

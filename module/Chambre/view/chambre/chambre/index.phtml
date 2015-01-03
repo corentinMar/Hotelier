@@ -1,35 +1,54 @@
 <?php
-$title = 'Les chambres';
+$title = "Gestion des chambres de l'hôtel n°" . $this->escapeHtml($idHotel);
 $this->headTitle($title);
+$tri = 0;
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
     <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>" class="btn btn-success">Ajouter une chambre</a>
     <a href="<?php echo $this->url('hotel'); ?>" class="btn btn-success">Retour</a>
 </p>
+<?php
+switch ($tri) {
+    case 0:
+        break;
+    case 1:
+        break;
+}
+?>
+<center>
+    <?php foreach ($chambres as $chambre) : ?>
+        <div class="asideChambre">
+            <table>
 
-<?php foreach ($chambres as $chambre) : ?>
+                <tr>
+                    <td rowspan="3">
+                        <img src="<?php
+                        $b = 1 + $this->escapeHtml($chambre->idChambre) % 30;
+                        echo $this->basePath('img/Chambres/' . $b . '.jpg')
+                        ?>" alt="Zend Framework 2" class="imgChambre"/>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Extras</a>
+                    </td>
+                    <td class="Chambre" rowspan="3">
+                        <h3><?php echo $this->escapeHtml($chambre->nomChambre); ?></h3>
+                        <p>Chambre n°<?php echo $this->escapeHtml($chambre->idChambre); ?></p>
+                        <p>Type <?php echo $this->escapeHtml($chambre->type); ?> : <?php echo $this->escapeHtml($chambre->type) * 20; ?> €</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Modifier</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Supprimer</a>
+                    </td>
+                </tr>
 
-    <div class="asideChambre">
-        <table>
-            <tr>
-                <td><img src="<?php
-                    $b = 1 + $this->escapeHtml($chambre->idChambre) % 30;
-                    echo $this->basePath('img/Chambres/' . $b . '.jpg')
-                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="2">
-                    <p>Chambre n°<?php echo $this->escapeHtml($chambre->idChambre); ?></p>
-                    <p><i><?php echo $this->escapeHtml($chambre->nomChambre); ?></i></p>
-                    <p>Type <?php echo $this->escapeHtml($chambre->type); ?> : <?php echo $this->escapeHtml($chambre->type) * 20; ?> €</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Extras</a>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Modifier</a>
-                    <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Supprimer</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-<?php endforeach; ?>
+            </table>
+        </div>
+    <?php endforeach; ?>
+</center>
