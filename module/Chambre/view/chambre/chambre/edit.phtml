@@ -26,10 +26,10 @@ $form->prepare();
     echo '<br />';
     echo $this->formRow($form->get('type'));
     echo '<br />';
-    //echo $this->formSubmit($form->get('submit'));
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />
+    <a href="<?php echo $this->url('chambre', array('idHotel' => $idHotel)); ?>" class="btn btn-success">Retour</a>
     <?php
     echo $this->form()->closeTag();
-    ?>    
+    ?>
 </div>

@@ -21,7 +21,7 @@ class HotelForm extends Form {
             'name' => 'idAdministrateur',
             'type' => 'Number',
             'options' => array(
-                'label' => 'L\'identifiant de l\'administrateur : ',
+                'label' => 'Identifiant du propriétaire : ',
             ),
         ));
 

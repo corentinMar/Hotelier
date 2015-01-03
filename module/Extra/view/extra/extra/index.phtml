@@ -1,11 +1,8 @@
 <?php
-$title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idChambre);
-;
+$title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-
-
 
 <br/>
 <br/>
@@ -19,14 +16,13 @@ if ($douche != null):
     <div class="asideChambre">
         <p><strong>Douche</strong></p>
         <table>
-            <tr> 
+            <tr>
                 <td><img src="<?php
-                    $b = rand(1, 3);
-                    echo $this->basePath('img/Douches/' . $b . '.jpg')
+                    echo $this->basePath('img/Douches/' . (1 + $douche->idDouche % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la douche: <?php echo $this->escapeHtml($douche->idDouche); ?></p>
-                    <p>Prix: <?php echo $this->escapeHtml($douche->prixDouche); ?></p>
+                    <p>Identifiant de la douche : <?php echo $this->escapeHtml($douche->idDouche); ?></p>
+                    <p>Prix : <?php echo $this->escapeHtml($douche->prixDouche); ?> €</p>
                 </td>
             </tr>
             <tr>
@@ -40,106 +36,27 @@ if ($douche != null):
 
 <?php else: ?>
     <div class="asideChambre">
-        <p><strong>Pas de Douche</strong></p>
+        <p><strong>Pas de douche.</strong></p>
         <a href="<?php echo $this->url('extra', array('action' => 'adddouche', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
     </div>
 <?php endif; ?>
-
-
-
-<?php
-/* * ****************************************
- * *******VUE TELEVISION**********
- * **************************************** */
-if ($television != null): //TELEVISION 
-    ?>
-    <div class="asideChambre">
-        <p><strong>Television</strong></p>
-        <table>
-            <tr> 
-                <td><img src="<?php
-                    $b = rand(1, 3);
-                    echo $this->basePath('img/Televisions/' . $b . '.jpg')
-                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la television: <?php echo $this->escapeHtml($television->idTelevision); ?></p>
-                    <p>Prix: <?php echo $this->escapeHtml($television->prixTelevision); ?></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="<?php echo $this->url('extra', array('action' => 'edittelevision', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Modifier</a>
-                    <a href="<?php echo $this->url('extra', array('action' => 'televisiondelete', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Supprimer</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-<?php else: ?>
-    <div class="asideChambre">
-        <p><strong>Pas de Television</strong></p>
-        <a href="<?php echo $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
-    </div>
-<?php endif; ?>
-
-
-
-<?php
-/* * ****************************************
- * *******VUE FRIGO**********
- * **************************************** */
-if ($frigo != null): //si un frigo est déja ajouté 
-    ?>
-    <div class="asideChambre">
-        <p><strong>Frigo</strong></p>
-        <table>
-            <tr> 
-                <td><img src="<?php
-                    $b = rand(1, 3);
-
-                    echo $this->basePath('img/Frigos/' . $b . '.jpg')
-                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="1">
-                    <p>Identifiant du frigo: <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
-                    <p>Prix: <?php echo $this->escapeHtml($frigo->prixFrigo); ?></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="<?php echo $this->url('extra', array('action' => 'editfrigo', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Modifier</a>
-                    <a href="<?php echo $this->url('extra', array('action' => 'frigodelete', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Supprimer</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-<?php else: ?>
-    <div class="asideChambre">
-        <p><strong>Pas de Frigo</strong></p>
-        <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
-    </div>
-<?php endif; ?>
-
-
 
 <?php
 /* * ****************************************
  * *******VUE BAIGNOIRE**********
  * **************************************** */
-if ($baignoire != null): //si baignoire déja ajoutée 
+if ($baignoire != null): //si baignoire déja ajoutée
     ?>
     <div class="asideChambre">
         <p><strong>Baignoire</strong></p>
         <table>
-            <tr> 
+            <tr>
                 <td><img src="<?php
-                    $b = rand(1, 3);
-
-                    echo $this->basePath('img/Baignoires/' . $b . '.jpg')
+                    echo $this->basePath('img/Baignoires/' . (1 + $baignoire->idBaignoire % 3) . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
-                    <p>Identifiant de la baignoire: <?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
-                    <p>Prix: <?php echo $this->escapeHtml($baignoire->prixBaignoire); ?></p>
+                    <p>Identifiant de la baignoire : <?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
+                    <p>Prix : <?php echo $this->escapeHtml($baignoire->prixBaignoire); ?> €</p>
                 </td>
             </tr>
             <tr>
@@ -153,7 +70,75 @@ if ($baignoire != null): //si baignoire déja ajoutée
 
 <?php else: ?>
     <div class="asideChambre">
-        <p><strong>Pas de Baignoire</strong></p>
+        <p><strong>Pas de baignoire.</strong></p>
         <a href="<?php echo $this->url('extra', array('action' => 'addbaignoire', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>
+
+<?php
+/* * ****************************************
+ * *******VUE TELEVISION**********
+ * **************************************** */
+if ($television != null): //TELEVISION
+    ?>
+    <div class="asideChambre">
+        <p><strong>Television</strong></p>
+        <table>
+            <tr>
+                <td><img src="<?php
+                    echo $this->basePath('img/Televisions/' . (1 + $television->idTelevision % 3) . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="1">
+                    <p>Identifiant de la television : <?php echo $this->escapeHtml($television->idTelevision); ?></p>
+                    <p>Prix : <?php echo $this->escapeHtml($television->prixTelevision); ?> €</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'edittelevision', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'televisiondelete', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>Pas de television.</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>
+
+<?php
+/* * ****************************************
+ * *******VUE FRIGO**********
+ * **************************************** */
+if ($frigo != null): //si un frigo est déja ajouté
+    ?>
+    <div class="asideChambre">
+        <p><strong>Frigo</strong></p>
+        <table>
+            <tr>
+                <td><img src="<?php
+                    echo $this->basePath('img/Frigos/' . (1 + $frigo->idFrigo % 3) . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="1">
+                    <p>Identifiant du frigo : <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
+                    <p>Prix : <?php echo $this->escapeHtml($frigo->prixFrigo); ?> €</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'editfrigo', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'frigodelete', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>Pas de frigo.</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
     </div>
 <?php endif; ?>

@@ -1,33 +1,33 @@
 <?php
-$title = 'Les Chambres';
+$title = 'Les chambres';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
     <a href="<?php echo $this->url('chambre', array('action' => 'add', 'idHotel' => $idHotel)); ?>" class="btn btn-success">Ajouter une chambre</a>
     <a href="<?php echo $this->url('hotel'); ?>" class="btn btn-success">Retour</a>
-
 </p>
 
 <?php foreach ($chambres as $chambre) : ?>
 
     <div class="asideChambre">
         <table>
-            <tr> 
-                <td><img src="<?php $b = 1 + $this->escapeHtml($chambre->idChambre) % 30;
-    echo $this->basePath('img/Chambres/' . $b . '.jpg')
-    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+            <tr>
+                <td><img src="<?php
+                    $b = 1 + $this->escapeHtml($chambre->idChambre) % 30;
+                    echo $this->basePath('img/Chambres/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="2">
-                    <p>Identifiant de la chambre: <?php echo $this->escapeHtml($chambre->idChambre); ?></p>
-                    <p>Nom de la chambre: <?php echo $this->escapeHtml($chambre->nomChambre); ?></p>
-                    <p>Type de la chambre: <?php echo $this->escapeHtml($chambre->type); ?></p>
+                    <p>Chambre n°<?php echo $this->escapeHtml($chambre->idChambre); ?></p>
+                    <p><i><?php echo $this->escapeHtml($chambre->nomChambre); ?></i></p>
+                    <p>Type <?php echo $this->escapeHtml($chambre->type); ?> : <?php echo $this->escapeHtml($chambre->type) * 20; ?> €</p>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Extras</a>
                     <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Modifier</a>
                     <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Supprimer</a>
-                    <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Gestion des extras</a>
                 </td>
             </tr>
         </table>

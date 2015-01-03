@@ -12,10 +12,6 @@ class ChambreController extends AbstractActionController {
     protected $chambreTable;
 
     public function indexAction() {
-        /* return new ViewModel(array(
-          'chambres' => $this->getChambreTable()->fetchAll(),
-          )); */
-
         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         return new ViewModel(array(
             'chambres' => $this->getChambreTable()->getListeChambre($idHotel),

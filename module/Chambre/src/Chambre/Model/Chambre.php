@@ -12,6 +12,7 @@ class Chambre {
     public $idHotel;
     public $nomChambre;
     public $type;
+    private $inputFilter;
 
     public function exchangeArray($data) {
         $this->idChambre = (!empty($data['idChambre'])) ? $data['idChambre'] : null;

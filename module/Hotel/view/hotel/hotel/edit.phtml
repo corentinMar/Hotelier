@@ -17,13 +17,16 @@ $form->prepare();
 
 <div class="asideGestion">
     <?php
+    if (isset($message)) {
+        echo $message . '<br />';
+        echo '<br />';
+    }
     echo $this->form()->openTag($form);
     echo $this->formHidden($form->get('idHotel'));
     echo $this->formRow($form->get('idAdministrateur'));
     echo '<br />';
     echo $this->formRow($form->get('nomHotel'));
     echo '<br />';
-    //echo $this->formSubmit($form->get('submit'));
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />
     <a href="<?php echo $this->url('hotel'); ?>" class="btn btn-success">Retour</a>

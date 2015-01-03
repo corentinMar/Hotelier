@@ -6,6 +6,8 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Hotel\Model\Hotel;
 use Hotel\Model\HotelTable;
+use Hotel\Model\Proprietaire;
+use Hotel\Model\ProprietaireTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -41,6 +43,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Hotel());
                     return new TableGateway('hotel', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Hotel\Model\ProprietaireTable' => function($sm) {
+                    $tableGateway = $sm->get('ProprietaireTableGateway');
+                    $table = new ProprietaireTable($tableGateway);
+                    return $table;
+                },
+                'ProprietaireTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Proprietaire());
+                    return new TableGateway('utilisateur', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

@@ -4,10 +4,9 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <div  class="asideGestion">
-    <p>Êtes vous sûr de supprimer la chambre n°
-        <strong><?php echo $this->escapeHtml($chambre->idChambre); ?></strong>
+    <p>Êtes vous sûr de supprimer la chambre n°<strong><?php echo $this->escapeHtml($chambre->idChambre); ?></strong>
         (<strong><?php echo $this->escapeHtml($chambre->nomChambre); ?></strong>)
-        de l'hôtel n° <strong><?php echo $this->escapeHtml($chambre->idHotel); ?></strong> ?
+        de l'hôtel n°<strong><?php echo $this->escapeHtml($chambre->idHotel); ?></strong> ?
     </p>
     <?php
     $url = $this->url('chambre', array(

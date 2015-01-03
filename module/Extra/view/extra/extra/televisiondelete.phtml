@@ -1,14 +1,13 @@
 <?php
-$title = 'Supprimer une Television';
+$title = 'Supprimer une television';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 
 <div  class="asideGestion">
-    <p>Êtes vous sûr de supprimer la télévision n°
-        <strong><?php echo $this->escapeHtml($idTelevision); ?></strong>
-        de la chambre n° <strong><?php echo $this->escapeHtml($idChambre); ?></strong> ?
+    <p>Êtes vous sûr de supprimer la télévision n°<strong><?php echo $this->escapeHtml($idTelevision); ?></strong>
+        de la chambre n°<strong><?php echo $this->escapeHtml($idChambre); ?></strong> ?
     </p>
     <?php
     $url = $this->url('extra', array(

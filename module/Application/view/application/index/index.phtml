@@ -2,7 +2,7 @@
 
 use Application\Module; ?><center><div class="jumbotron">
         <h1>Bienvenue <strong class="zf-green"><?php echo ucfirst(Module::$utilisateur->nom); ?></strong></h1>
-        <p>Le gestionnaire d'hôtels <strong>Hôtelier</strong> va vous permettre de créer des hôtels et d'étendre votre empire hôtelier.</p>
+        <p>Le gestionnaire d'hôtels <strong>Hôtelier</strong> vous permet d'ajouter des hôtels, des chambres et des extras,<br />pour gérer et étendre votre empire hôtelier.</p>
         <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('hotel') ?>">Voir mes hôtels &raquo;</a></p>
     </div>
 
@@ -15,7 +15,7 @@ use Application\Module; ?><center><div class="jumbotron">
                     <h3 class="panel-title">Ajouter un hôtel</h3>
                 </div>
                 <div class="panel-body">
-                    <p>Vous pouvez aussi ajouter un nouvel hôtel à votre gestionnaire. Pour cela il vous suffit de cliquer sur le bouton ci-dessous.</p>
+                    <p>Vous pouvez ajouter un nouvel hôtel à votre gestionnaire en cliquant sur le bouton ci-dessous</p>
                     <p><a class="btn btn-success pull-right" href="<?php echo $this->url('hotel', array('action' => 'add')); ?>">Ajouter un hôtel &raquo;</a></p>
                 </div>
             </div>
@@ -25,11 +25,10 @@ use Application\Module; ?><center><div class="jumbotron">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <img src="<?php echo $this->basePath('img/log4.png') ?>" alt="Hotelier" class="log"/>
-                    <h3 class="panel-title">Une autre chose</h3>
+                    <h3 class="panel-title">Astuce</h3>
                 </div>
                 <div class="panel-body">
-                    <p>Une autre chose</p>
-                    <p><a class="btn btn-success pull-right" href="">Une autre chose &raquo;</a></p>
+                    <p>N'oubliez pas de cliquer sur le bouton "Gérer" de vos hôtels pour avoir accès aux chambres, et aux extras.</p>
                 </div>
             </div>
         </div>

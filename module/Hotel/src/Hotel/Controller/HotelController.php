@@ -5,24 +5,35 @@ namespace Hotel\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Hotel\Model\Hotel;
+use Hotel\Model\Proprietaire;
 use Hotel\Form\HotelForm;
 use Application\Module;
 
 class HotelController extends AbstractActionController {
 
     protected $hotelTable;
+    protected $proprietaireTable;
 
     public function indexAction() {
         //L'utilisateur est admin ou non ?
         if (Module::$utilisateur->administrateur) {
             //Admin
+            //On récupère les noms des propriétaires
+            $hotels = $this->getHotelTable()->fetchAll();
+            foreach ($hotels as $hotel) {
+                $listeProprietaire[$hotel->idAdministrateur] = $this->getProprietaireTable()->getProprietaire($hotel->idAdministrateur)->nom;
+            }
             return new ViewModel(array(
                 'hotels' => $this->getHotelTable()->fetchAll(),
+                'listeProprietaire' => $listeProprietaire,
             ));
         } else {
             //Non admin
+            //On récupère le nom du propriétaire
+            $listeProprietaire[Module::$utilisateur->id] = Module::$utilisateur->nom;
             return new ViewModel(array(
                 'hotels' => $this->getHotelTable()->getListeHotel(Module::$utilisateur->id),
+                'listeProprietaire' => $listeProprietaire,
             ));
         }
     }
@@ -39,11 +50,26 @@ class HotelController extends AbstractActionController {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $hotel->exchangeArray($form->getData());
-                $this->getHotelTable()->saveHotel($hotel);
+                //On vérifie que l'identifiant du propriétaire existe bien déjà
+                $existe = false;
+                $listeProprietaire = $this->getProprietaireTable()->fetchAll();
+                foreach ($listeProprietaire as $proprietaire) {
+                    if ($proprietaire->id == $hotel->idAdministrateur) {
+                        $existe = true;
+                    }
+                }
+                if ($existe) {
+                    $hotel->exchangeArray($form->getData());
+                    $this->getHotelTable()->saveHotel($hotel);
 
-                // Redirect to list of hotels
-                return $this->redirect()->toRoute('hotel');
+                    // Redirect to list of hotels
+                    return $this->redirect()->toRoute('hotel');
+                } else {
+                    //Le propriétaire n'existe pas
+                    $form = new HotelForm();
+                    return array('form' => $form, 'message' => 'Erreur : Le propriétaire n\'existe pas.');
+                }
+                return array('form' => $form);
             }
         }
         return array('form' => $form);
@@ -77,10 +103,23 @@ class HotelController extends AbstractActionController {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $this->getHotelTable()->saveHotel($hotel);
+                //On vérifie que l'identifiant du propriétaire existe bien déjà
+                $existe = false;
+                $listeProprietaire = $this->getProprietaireTable()->fetchAll();
+                foreach ($listeProprietaire as $proprietaire) {
+                    if ($proprietaire->id == $hotel->idAdministrateur) {
+                        $existe = true;
+                    }
+                }
+                if ($existe) {
+                    $this->getHotelTable()->saveHotel($hotel);
 
-                // Redirect to list of hotels
-                return $this->redirect()->toRoute('hotel');
+                    // Redirect to list of hotels
+                    return $this->redirect()->toRoute('hotel');
+                } else {
+                    //Le propriétaire n'existe pas
+                    return array('idHotel' => $idHotel, 'form' => $form, 'message' => 'Erreur : Le propriétaire n\'existe pas.');
+                }
             }
         }
 
@@ -111,7 +150,8 @@ class HotelController extends AbstractActionController {
 
         return array(
             'idHotel' => $idHotel,
-            'hotel' => $this->getHotelTable()->getHotel($idHotel)
+            'hotel' => $this->getHotelTable()->getHotel($idHotel),
+            'proprietaire' => $this->getProprietaireTable()->getProprietaire($idHotel)->nom,
         );
     }
 
@@ -121,6 +161,14 @@ class HotelController extends AbstractActionController {
             $this->hotelTable = $sm->get('Hotel\Model\HotelTable');
         }
         return $this->hotelTable;
+    }
+
+    public function getProprietaireTable() {
+        if (!$this->proprietaireTable) {
+            $sm = $this->getServiceLocator();
+            $this->proprietaireTable = $sm->get('Hotel\Model\ProprietaireTable');
+        }
+        return $this->proprietaireTable;
     }
 
 }

@@ -18,7 +18,6 @@ class HotelTable {
     }
 
     public function getHotel($idHotel) {
-        $idHotel = (int) $idHotel;
         $rowset = $this->tableGateway->select(array('idHotel' => $idHotel));
         $row = $rowset->current();
         if (!$row) {

@@ -17,9 +17,9 @@ $form->prepare();
     echo '<br />';
     echo $this->formRow($form->get('prixTelevision'));
     echo '<br />';
- 
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Ajouter" />
+    <a href="<?php echo $this->url('extra', array('idChambre' => $idChambre)); ?>" class="btn btn-success">Retour</a>
     <?php
     echo $this->form()->closeTag();
     ?>

@@ -11,6 +11,7 @@ class Hotel {
     public $idHotel;
     public $idAdministrateur;
     public $nomHotel;
+    private $inputFilter;
 
     public function exchangeArray($data) {
         $this->idHotel = (!empty($data['idHotel'])) ? $data['idHotel'] : null;

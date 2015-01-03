@@ -1,5 +1,5 @@
 <?php
-$title = 'Ajouter un Frigo';
+$title = 'Ajouter un frigo';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -17,9 +17,9 @@ $form->prepare();
     echo '<br />';
     echo $this->formRow($form->get('prixFrigo'));
     echo '<br />';
- 
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Ajouter" />
+    <a href="<?php echo $this->url('extra', array('idChambre' => $idChambre)); ?>" class="btn btn-success">Retour</a>
     <?php
     echo $this->form()->closeTag();
     ?>
