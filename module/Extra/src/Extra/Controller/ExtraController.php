@@ -7,23 +7,28 @@ use Zend\View\Model\ViewModel;
 use Extra\Form\DoucheForm;
 use Extra\Form\TelevisionForm;
 use Extra\Form\FrigoForm;
+use Extra\Form\BaignoireForm;
 
 class ExtraController extends AbstractActionController {
 
     protected $doucheTable;
     protected $televisionTable;
     protected $frigoTable;
+    protected $baignoireTable;
 
     public function indexAction() {
 
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
 
+
+
         return new ViewModel(array(
             'idChambre' => $idChambre,
             'douche' => $this->getDoucheTable()->getDouche($idChambre),
             'television' => $this->getTelevisionTable()->getTelevision($idChambre),
             'frigo' => $this->getFrigoTable()->getFrigo($idChambre),
+            'baignoire' => $this->getBaignoireTable()->getBaignoire($idChambre),
         ));
     }
 
@@ -33,8 +38,10 @@ class ExtraController extends AbstractActionController {
 
     public function adddoucheAction() {
 
+
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
 
+        print_r($idChambre);
         $form = new DoucheForm();
         $form->get('idChambre')->setValue($idChambre);
         $form->get('submit')->setValue('Ajouter');
@@ -42,6 +49,7 @@ class ExtraController extends AbstractActionController {
         $request = $this->getRequest();
         if ($request->isPost()) {
             $douche = new \Extra\Model\Douche();
+
             $form->setInputFilter($douche->getInputFilter());
             $form->setData($request->getPost());
 
@@ -116,6 +124,8 @@ class ExtraController extends AbstractActionController {
     }
 
     public function douchedeleteAction() {
+
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         $idDouche = (int) $this->params()->fromRoute('idDouche', 0);
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
@@ -137,6 +147,7 @@ class ExtraController extends AbstractActionController {
             // Redirect to list of extra
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -145,6 +156,7 @@ class ExtraController extends AbstractActionController {
             'idDouche' => $idDouche,
             'douche' => $this->getDoucheTable()->getDouche($idDouche),
             'idChambre' => $idChambre,
+            'idHotel' => $idHotel,
         );
     }
 
@@ -182,19 +194,21 @@ class ExtraController extends AbstractActionController {
 
     public function edittelevisionAction() {
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+
         if (!$idChambre) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idChambre' => $idChambre,
             ));
         }
 
         $idTelevision = (int) $this->params()->fromRoute('idDouche', 0);
 
-        print_r($idTelevision);
-        print_r($idChambre);
+
         if (!$idTelevision) {
             return $this->redirect()->toRoute('extra', array(
-                        'action' => 'add'
+                        'action' => 'add',
+                        'idChambre' => $idChambre,
             ));
         }
 
@@ -389,8 +403,128 @@ class ExtraController extends AbstractActionController {
             'idChambre' => $idChambre,
         );
     }
-    
-     /*     * ****************************************
+
+    /*     * ****************************************
+     * *******Actions Baignoire**********
+     * **************************************** */
+
+    public function addbaignoireAction() {
+
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+
+        $form = new BaignoireForm();
+        $form->get('idChambre')->setValue($idChambre);
+        $form->get('submit')->setValue('Ajouter');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $baignoire = new \Extra\Model\Baignoire();
+            $form->setInputFilter($baignoire->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $baignoire->exchangeArray($form->getData());
+                $this->getBaignoireTable()->saveBaignoire($baignoire);
+
+                // Redirect to list of extra
+                return $this->redirect()->toRoute('extra', array(
+                            'action' => 'index',
+                            'idChambre' => $idChambre,
+                ));
+            }
+        }
+        return array('form' => $form, 'idChambre' => $idChambre);
+    }
+
+    public function editbaignoireAction() {
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        if (!$idChambre) {
+            return $this->redirect()->toRoute('extra', array(
+                        'action' => 'index',
+            ));
+        }
+
+        $idBaignoire = (int) $this->params()->fromRoute('idDouche', 0);
+
+
+        if (!$idBaignoire) {
+            return $this->redirect()->toRoute('extra', array(
+                        'action' => 'add'
+            ));
+        }
+
+
+        try {
+            $baignoire = $this->getBaignoireTable()->getBaignoirev2($idBaignoire);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('extra', array(
+                        'action' => 'index',
+                        'idChambre' => $idChambre,
+            ));
+        }
+
+        $form = new BaignoireForm();
+        $form->bind($baignoire);
+        $form->get('submit')->setAttribute('value', 'Modifier');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($baignoire->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $this->getBaignoireTable()->saveBaignoire($baignoire);
+
+                // Redirect to list of chambres
+                return $this->redirect()->toRoute('extra', array(
+                            'action' => 'index',
+                            'idChambre' => $idChambre,
+                ));
+            }
+        }
+
+        return array(
+            'idBaignoire' => $idBaignoire,
+            'baignoire' => $this->getBaignoireTable()->getBaignoire($idBaignoire),
+            'idChambre' => $idChambre,
+            'form' => $form,
+        );
+    }
+
+    public function baignoiredeleteAction() {
+
+        $idBaignoire = (int) $this->params()->fromRoute('idDouche', 99);
+
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        if (!$idChambre) {
+            return $this->redirect()->toRoute('chambre');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'Non');
+
+            if ($del == 'Oui') {
+                $idBaignoire = (int) $this->params()->fromRoute('idDouche', 99);
+
+
+                $this->getBaignoireTable()->deleteBaignoire($idBaignoire);
+            }
+
+            // Redirect to list of extra
+            return $this->redirect()->toRoute('extra', array(
+                        'action' => 'index',
+                        'idChambre' => $idChambre,
+            ));
+        }
+        return array(
+            'idBaignoire' => $idBaignoire,
+            'baignoire' => $this->getBaignoireTable()->getBaignoire($idBaignoire),
+            'idChambre' => $idChambre,
+        );
+    }
+
+    /*     * ****************************************
      * *******Getter Tables**********
      * **************************************** */
 
@@ -416,6 +550,14 @@ class ExtraController extends AbstractActionController {
             $this->frigoTable = $sm->get('Extra\Model\FrigoTable');
         }
         return $this->frigoTable;
+    }
+
+    public function getBaignoireTable() {
+        if (!$this->baignoireTable) {
+            $sm = $this->getServiceLocator();
+            $this->baignoireTable = $sm->get('Extra\Model\BaignoireTable');
+        }
+        return $this->baignoireTable;
     }
 
 }

@@ -7,8 +7,15 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
 
 
 
+<br/>
+<br/>
 
-<?php if ($douche != null): //DOUCHE ?>
+<?php
+/* * ****************************************
+ * *******VUE DOUCHE**********
+ * **************************************** */
+if ($douche != null):
+    ?>
     <div class="asideChambre">
         <p><strong>Douche</strong></p>
         <table>
@@ -17,7 +24,7 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
                     $b = rand(1, 3);
                     echo $this->basePath('img/Douches/' . $b . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="2">
+                <td class="Chambre" rowspan="1">
                     <p>Identifiant de la douche: <?php echo $this->escapeHtml($douche->idDouche); ?></p>
                     <p>Prix: <?php echo $this->escapeHtml($douche->prixDouche); ?></p>
                 </td>
@@ -40,7 +47,12 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
 
 
 
-<?php if ($television != null): //TELEVISION?>
+<?php
+/* * ****************************************
+ * *******VUE TELEVISION**********
+ * **************************************** */
+if ($television != null): //TELEVISION 
+    ?>
     <div class="asideChambre">
         <p><strong>Television</strong></p>
         <table>
@@ -49,7 +61,7 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
                     $b = rand(1, 3);
                     echo $this->basePath('img/Televisions/' . $b . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="2">
+                <td class="Chambre" rowspan="1">
                     <p>Identifiant de la television: <?php echo $this->escapeHtml($television->idTelevision); ?></p>
                     <p>Prix: <?php echo $this->escapeHtml($television->prixTelevision); ?></p>
                 </td>
@@ -72,7 +84,12 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
 
 
 
-<?php if ($frigo != null): //FRIGO?>
+<?php
+/* * ****************************************
+ * *******VUE FRIGO**********
+ * **************************************** */
+if ($frigo != null): //si un frigo est déja ajouté 
+    ?>
     <div class="asideChambre">
         <p><strong>Frigo</strong></p>
         <table>
@@ -82,7 +99,7 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
 
                     echo $this->basePath('img/Frigos/' . $b . '.jpg')
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
-                <td class="Chambre" rowspan="2">
+                <td class="Chambre" rowspan="1">
                     <p>Identifiant du frigo: <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
                     <p>Prix: <?php echo $this->escapeHtml($frigo->prixFrigo); ?></p>
                 </td>
@@ -98,8 +115,45 @@ $title = "Gestion des extra de la chambre n°" . " " . $this->escapeHtml($idCham
 
 <?php else: ?>
     <div class="asideChambre">
-        <p><strong>pas de Frigo</strong></p>
+        <p><strong>Pas de Frigo</strong></p>
         <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
     </div>
 <?php endif; ?>
 
+
+
+<?php
+/* * ****************************************
+ * *******VUE BAIGNOIRE**********
+ * **************************************** */
+if ($baignoire != null): //si baignoire déja ajoutée 
+    ?>
+    <div class="asideChambre">
+        <p><strong>Baignoire</strong></p>
+        <table>
+            <tr> 
+                <td><img src="<?php
+                    $b = rand(1, 3);
+
+                    echo $this->basePath('img/Baignoires/' . $b . '.jpg')
+                    ?>" alt="Zend Framework 2" class="imgChambre"/></td>
+                <td class="Chambre" rowspan="1">
+                    <p>Identifiant de la baignoire: <?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
+                    <p>Prix: <?php echo $this->escapeHtml($baignoire->prixBaignoire); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="<?php echo $this->url('extra', array('action' => 'editbaignoire', 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Modifier</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'baignoiredelete', 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Supprimer</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<?php else: ?>
+    <div class="asideChambre">
+        <p><strong>Pas de Baignoire</strong></p>
+        <a href="<?php echo $this->url('extra', array('action' => 'addbaignoire', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+    </div>
+<?php endif; ?>

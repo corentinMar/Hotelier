@@ -1,5 +1,5 @@
 <?php
-$title = 'Modifier une television';
+$title = 'Modifier une baignoire';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -7,7 +7,7 @@ $this->headTitle($title);
 <?php
 $form = $this->form;
 
-$form->setAttribute('action', $this->url('extra', array('action' => 'edittelevision', 'idChambre' => $this->idChambre, 'idDouche' => $this->idTelevision)));
+$form->setAttribute('action', $this->url('extra', array('action' => 'editbaignoire', 'idChambre' => $this->idChambre, 'idDouche' => $this->idBaignoire)));
 $form->prepare();
 ?>
 
@@ -16,9 +16,9 @@ $form->prepare();
     echo $this->form()->openTag($form);
     echo $this->formHidden($form->get('idChambre'));
     echo '<br />';
-    echo $this->formHidden($form->get('idTelevision'));
+    echo $this->formHidden($form->get('idBaignoire'));
     echo '<br />';
-    echo $this->formRow($form->get('prixTelevision'));
+    echo $this->formRow($form->get('prixBaignoire'));
     echo '<br />';
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />

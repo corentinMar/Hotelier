@@ -17,14 +17,10 @@ return array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'idChambre' => '[0-9]+',
                         'idDouche' => '[0-9]+',
-                     
-                       
-                      
                     ),
                     'defaults' => array(
                         'controller' => 'Extra\Controller\Extra',
                         'action' => 'index',
-                   
                     ),
                 ),
             ),

@@ -62,6 +62,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Frigo());
                     return new TableGateway('frigo', $dbAdapter, null, $resultSetPrototype);
                 },
+                'Extra\Model\BaignoireTable' => function($sm) {
+                    $tableGateway = $sm->get('BaignoireTableGateway');
+                    $table = new Model\BaignoireTable($tableGateway);
+                    return $table;
+                },
+                'BaignoireTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Baignoire());
+                    return new TableGateway('baignoire', $dbAdapter, null, $resultSetPrototype);
+                },
             ),
         );
     }
