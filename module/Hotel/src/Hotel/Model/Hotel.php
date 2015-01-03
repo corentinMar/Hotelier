@@ -45,6 +45,15 @@ class Hotel {
                 'filters' => array(
                     array('name' => 'Int'),
                 ),
+                'validators' => array(
+                    array(
+                        'name' => 'Between',
+                        'options' => array(
+                            'min' => 1,
+                            'messages' => array('notBetween' => 'Valeur négative ou nulle incorrecte')
+                        ),
+                    ),
+                ),
             ));
 
             $inputFilter->add(array(
