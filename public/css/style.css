@@ -203,6 +203,7 @@ input[type="text"], input[type="number"], input[type="password"]{
     padding: 10px;
     color: #ffffff;
     float: right;
+    margin-top: 12px;
     font-size: 13px;
     font-family: Arial;
 }
