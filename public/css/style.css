@@ -220,7 +220,7 @@ input[type="text"], input[type="number"], input[type="password"]{
     vertical-align: top;
     text-align: center;
     position: relative;
-    width: 48%;
+    width: auto;
     height: 50%;
     background-color: #E8E8E8;
     box-shadow: 0px 2px 5px #1c1a00;
@@ -242,12 +242,19 @@ input[type="text"], input[type="number"], input[type="password"]{
     float : left;
 }
 
-p.prixTotalChambre{
-    position:relative;
-    margin-top: -15px;
-    color: #000000;
-    text-align: center; 
+h3.prixTotalChambre{
+    display: inline-block;
+    text-align: center;
+    height: 35px;
+    position: relative;
+    background-color: #ff0000;
+    box-shadow: 0px 2px 5px #1c1a00;
+    border-radius: 5px;
+    padding: 10px;
     font-size: 18px;
+    margin-top: 0px;
+    font-family: Arial;
+    color: #ffffff;
 }
 
 /******************************************
@@ -361,3 +368,27 @@ p.sourisHotel{
     margin-left: 22%;
 }
 
+/******************************************
+*******************************************
+******************Extras*******************
+*******************************************
+******************************************/
+
+.asideExtras
+{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+    width: auto;
+    height: 50%;
+    background-color: #E8E8E8;
+    box-shadow: 0px 2px 5px #1c1a00;
+    border-radius: 5px;
+    padding: 10px;
+    color: #1E2421;
+    font-size: 16px;
+    font-family: Arial;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}

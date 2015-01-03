@@ -21,32 +21,26 @@ switch ($tri) {
         <div class="asideChambre"><div class="prix">Prix : <?php echo $this->escapeHtml($chambre->type) * 20; ?> €</div>
             <table>
                 <tr>
+                    <td>
+                        <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Extras</a>
+                        <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Modifier</a>
+                        <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Supprimer</a>
+                    </td>
+                </tr>
+                <tr>
                     <td rowspan="3">
                         <img src="<?php
                         $b = 1 + $this->escapeHtml($chambre->idChambre) % 30;
                         echo $this->basePath('img/Chambres/' . $b . '.jpg')
                         ?>" alt="Zend Framework 2" class="imgChambre"/>
                     </td>
-                    <td>
-                        <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Extras</a>
-                    </td>
+
                     <td class="Chambre" rowspan="3">
                         <h3><?php echo $this->escapeHtml($chambre->nomChambre); ?></h3>
                         <p>Chambre n°<?php echo $this->escapeHtml($chambre->idChambre); ?></p>
                         <p>Type <?php echo $this->escapeHtml($chambre->type); ?></p>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Modifier</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche">Supprimer</a>
-                    </td>
-                </tr>
-
             </table>
         </div>
     <?php endforeach; ?>
