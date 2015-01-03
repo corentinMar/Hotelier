@@ -37,7 +37,7 @@ if ($frigo != null) {
                     <h3>Douche n°<?php echo $this->escapeHtml($douche->idDouche); ?></</h3>
                     <table>
                         <tr>
-                            <td>                              
+                            <td>
                                 <img src="<?php
                                 echo $this->basePath('img/Douches/' . (1 + $douche->idDouche % 3) . '.jpg')
                                 ?>" alt="Zend Framework 2" class="imgChambre"/>
@@ -45,8 +45,8 @@ if ($frigo != null) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="<?php echo $this->url('extra', array('action' => 'editdouche', 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Modifier</a>
-                                <a href="<?php echo $this->url('extra', array('action' => 'douchedelete', 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Supprimer</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'editdouche', 'idHotel' => $idHotel, 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Modifier</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'douchedelete', 'idHotel' => $idHotel, 'idChambre' => $douche->idChambre, 'idDouche' => $douche->idDouche)); ?>" class="btn btn-success">Supprimer</a>
                             </td>
                         </tr>
                     </table>
@@ -55,7 +55,7 @@ if ($frigo != null) {
             <?php else: ?>
                 <div class="asideExtras">
                     <p><strong>Pas de douche.</strong></p>
-                    <a href="<?php echo $this->url('extra', array('action' => 'adddouche', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'adddouche', 'idHotel' => $idHotel, 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
                 </div>
             <?php endif; ?>
         </center>
@@ -81,8 +81,8 @@ if ($frigo != null) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="<?php echo $this->url('extra', array('action' => 'editbaignoire', 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Modifier</a>
-                                <a href="<?php echo $this->url('extra', array('action' => 'baignoiredelete', 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Supprimer</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'editbaignoire', 'idHotel' => $idHotel, 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Modifier</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'baignoiredelete', 'idHotel' => $idHotel, 'idChambre' => $baignoire->idChambre, 'idDouche' => $baignoire->idBaignoire)); ?>" class="btn btn-success">Supprimer</a>
                             </td>
                         </tr>
                     </table>
@@ -91,7 +91,7 @@ if ($frigo != null) {
             <?php else: ?>
                 <div class="asideExtras">
                     <p><strong>Pas de baignoire.</strong></p>
-                    <a href="<?php echo $this->url('extra', array('action' => 'addbaignoire', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'addbaignoire', 'idHotel' => $idHotel, 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
                 </div>
             <?php endif; ?>
         </center>
@@ -119,8 +119,8 @@ if ($frigo != null) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="<?php echo $this->url('extra', array('action' => 'edittelevision', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Modifier</a>
-                                <a href="<?php echo $this->url('extra', array('action' => 'televisiondelete', 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Supprimer</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'edittelevision', 'idHotel' => $idHotel, 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Modifier</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'televisiondelete', 'idHotel' => $idHotel, 'idChambre' => $television->idChambre, 'idDouche' => $television->idTelevision)); ?>" class="btn btn-success">Supprimer</a>
                             </td>
                         </tr>
                     </table>
@@ -129,7 +129,7 @@ if ($frigo != null) {
             <?php else: ?>
                 <div class="asideExtras">
                     <p><strong>Pas de television.</strong></p>
-                    <a href="<?php echo $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'addtelevision', 'idHotel' => $idHotel, 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
                 </div>
             <?php endif; ?>
         </center>
@@ -153,8 +153,8 @@ if ($frigo != null) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="<?php echo $this->url('extra', array('action' => 'editfrigo', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Modifier</a>
-                                <a href="<?php echo $this->url('extra', array('action' => 'frigodelete', 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Supprimer</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'editfrigo', 'idHotel' => $idHotel, 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Modifier</a>
+                                <a href="<?php echo $this->url('extra', array('action' => 'frigodelete', 'idHotel' => $idHotel, 'idChambre' => $frigo->idChambre, 'idDouche' => $frigo->idFrigo)); ?>" class="btn btn-success">Supprimer</a>
                             </td>
                         </tr>
                     </table>
@@ -163,7 +163,7 @@ if ($frigo != null) {
             <?php else: ?>
                 <div class="asideExtras">
                     <p><strong>Pas de frigo.</strong></p>
-                    <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
+                    <a href="<?php echo $this->url('extra', array('action' => 'addfrigo', 'idHotel' => $idHotel, 'idChambre' => $idChambre)); ?>" class="btn btn-success">Ajouter</a>
                 </div>
             <?php endif; ?>
         </center>

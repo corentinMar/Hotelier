@@ -65,7 +65,7 @@ class ExtraController extends AbstractActionController {
                 ));
             }
         }
-        return array('form' => $form, 'idChambre' => $idChambre);
+        return array('form' => $form, 'idHotel' => $idHotel, 'idChambre' => $idChambre);
     }
 
     public function editdoucheAction() {
