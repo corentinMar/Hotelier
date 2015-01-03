@@ -18,12 +18,11 @@ class ExtraController extends AbstractActionController {
 
     public function indexAction() {
 
-
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
 
-
-
         return new ViewModel(array(
+            'idHotel' => $idHotel,
             'idChambre' => $idChambre,
             'douche' => $this->getDoucheTable()->getDouche($idChambre),
             'television' => $this->getTelevisionTable()->getTelevision($idChambre),
@@ -40,6 +39,7 @@ class ExtraController extends AbstractActionController {
 
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         print_r($idChambre);
         $form = new DoucheForm();
@@ -60,6 +60,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of extra
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -69,6 +70,7 @@ class ExtraController extends AbstractActionController {
 
     public function editdoucheAction() {
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         if (!$idChambre) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
@@ -110,6 +112,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of chambres
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -117,6 +120,7 @@ class ExtraController extends AbstractActionController {
 
         return array(
             'idDouche' => $idDouche,
+            'idHotel' => $idHotel,
             'douche' => $this->getDoucheTable()->getDouche($idDouche),
             'idChambre' => $idChambre,
             'form' => $form,
@@ -167,6 +171,7 @@ class ExtraController extends AbstractActionController {
     public function addtelevisionAction() {
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $form = new TelevisionForm();
         $form->get('idChambre')->setValue($idChambre);
@@ -185,6 +190,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of extra
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -194,10 +200,12 @@ class ExtraController extends AbstractActionController {
 
     public function edittelevisionAction() {
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         if (!$idChambre) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -208,6 +216,7 @@ class ExtraController extends AbstractActionController {
         if (!$idTelevision) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'add',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -218,6 +227,7 @@ class ExtraController extends AbstractActionController {
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -237,6 +247,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of chambres
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -244,6 +255,7 @@ class ExtraController extends AbstractActionController {
 
         return array(
             'idTelevision' => $idTelevision,
+            'idHotel' => $idHotel,
             'television' => $this->getTelevisionTable()->getTelevision($idTelevision),
             'idChambre' => $idChambre,
             'form' => $form,
@@ -253,6 +265,7 @@ class ExtraController extends AbstractActionController {
     public function televisiondeleteAction() {
 
         $idTelevision = (int) $this->params()->fromRoute('idDouche', 99);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
         if (!$idChambre) {
@@ -273,12 +286,14 @@ class ExtraController extends AbstractActionController {
             // Redirect to list of extra
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
 
         return array(
             'idTelevision' => $idTelevision,
+            'idHotel' => $idHotel,
             'television' => $this->getTelevisionTable()->getTelevision($idTelevision),
             'idChambre' => $idChambre,
         );
@@ -291,6 +306,7 @@ class ExtraController extends AbstractActionController {
     public function addfrigoAction() {
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $form = new FrigoForm();
         $form->get('idChambre')->setValue($idChambre);
@@ -309,6 +325,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of extra
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -318,6 +335,7 @@ class ExtraController extends AbstractActionController {
 
     public function editfrigoAction() {
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         if (!$idChambre) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
@@ -339,6 +357,7 @@ class ExtraController extends AbstractActionController {
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -358,6 +377,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of chambres
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -365,6 +385,7 @@ class ExtraController extends AbstractActionController {
 
         return array(
             'idFrigo' => $idFrigo,
+            'idHotel' => $idHotel,
             'frigo' => $this->getFrigoTable()->getFrigo($idFrigo),
             'idChambre' => $idChambre,
             'form' => $form,
@@ -374,6 +395,7 @@ class ExtraController extends AbstractActionController {
     public function frigodeleteAction() {
 
         $idFrigo = (int) $this->params()->fromRoute('idDouche', 99);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
         if (!$idChambre) {
@@ -394,11 +416,13 @@ class ExtraController extends AbstractActionController {
             // Redirect to list of extra
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
         return array(
             'idFrigo' => $idFrigo,
+            'idHotel' => $idHotel,
             'frigo' => $this->getFrigoTable()->getFrigo($idFrigo),
             'idChambre' => $idChambre,
         );
@@ -411,6 +435,7 @@ class ExtraController extends AbstractActionController {
     public function addbaignoireAction() {
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $form = new BaignoireForm();
         $form->get('idChambre')->setValue($idChambre);
@@ -430,6 +455,7 @@ class ExtraController extends AbstractActionController {
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
                             'idChambre' => $idChambre,
+                            'idHotel' => $idHotel,
                 ));
             }
         }
@@ -438,6 +464,7 @@ class ExtraController extends AbstractActionController {
 
     public function editbaignoireAction() {
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         if (!$idChambre) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
@@ -459,6 +486,7 @@ class ExtraController extends AbstractActionController {
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
@@ -478,6 +506,7 @@ class ExtraController extends AbstractActionController {
                 // Redirect to list of chambres
                 return $this->redirect()->toRoute('extra', array(
                             'action' => 'index',
+                            'idHotel' => $idHotel,
                             'idChambre' => $idChambre,
                 ));
             }
@@ -485,6 +514,7 @@ class ExtraController extends AbstractActionController {
 
         return array(
             'idBaignoire' => $idBaignoire,
+            'idHotel' => $idHotel,
             'baignoire' => $this->getBaignoireTable()->getBaignoire($idBaignoire),
             'idChambre' => $idChambre,
             'form' => $form,
@@ -494,6 +524,7 @@ class ExtraController extends AbstractActionController {
     public function baignoiredeleteAction() {
 
         $idBaignoire = (int) $this->params()->fromRoute('idDouche', 99);
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
 
         $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
         if (!$idChambre) {
@@ -514,10 +545,12 @@ class ExtraController extends AbstractActionController {
             // Redirect to list of extra
             return $this->redirect()->toRoute('extra', array(
                         'action' => 'index',
+                        'idHotel' => $idHotel,
                         'idChambre' => $idChambre,
             ));
         }
         return array(
+            'idHotel' => $idHotel,
             'idBaignoire' => $idBaignoire,
             'baignoire' => $this->getBaignoireTable()->getBaignoire($idBaignoire),
             'idChambre' => $idChambre,

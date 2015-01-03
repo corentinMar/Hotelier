@@ -22,7 +22,7 @@ $form->prepare();
     echo '<br />';
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="Modifier" />
-    <a href="<?php echo $this->url('extra', array('idChambre' => $idChambre)); ?>" class="btn btn-success">Retour</a>
+    <a href="<?php echo $this->url('extra', array('idHotel' => $idHotel, 'idChambre' => $idChambre)); ?>" class="btn btn-success">Retour</a>
     <?php
     echo $this->form()->closeTag();
     ?>

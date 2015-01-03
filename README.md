@@ -30,9 +30,15 @@ Si besoin, pour modifier le répertoire où seront écrit les logs, modifiez la 
 
 Utilisation
 ----------
-Vous avez la possibilité de créer un compte ou de vous connecter avec les identifiants déjà existants:
-* Identifiant: admin - Mot de passe: admin (Compte administrateur)
-* Identifiant: test - Mot de passe: test
+Vous avez la possibilité de créer un compte ou de vous connecter avec les identifiants déjà existants :
+
+- Compte administrateur
+* Nom : admin
+* Mot de passe : admin
+
+- Compte utilisateur
+* Nom : test
+* Mot de passe : test
 
 
 Merci ! :-)

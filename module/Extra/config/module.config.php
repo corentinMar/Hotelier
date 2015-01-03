@@ -12,9 +12,10 @@ return array(
             'extra' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/extra[/][:action][/:idChambre][/:idDouche]',
+                    'route' => '/extra[/][:action][/:idHotel][/:idChambre][/:idDouche]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'idHotel' => '[0-9]+',
                         'idChambre' => '[0-9]+',
                         'idDouche' => '[0-9]+',
                     ),

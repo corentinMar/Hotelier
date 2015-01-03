@@ -22,7 +22,7 @@ switch ($tri) {
             <table>
                 <tr>
                     <td>
-                        <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche bbb">Extras</a>
+                        <a href="<?php echo $this->url('extra', array('action' => 'index', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche bbb">Extras</a>
                         <a href="<?php echo $this->url('chambre', array('action' => 'edit', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche bbb">Modifier</a>
                         <a href="<?php echo $this->url('chambre', array('action' => 'delete', 'idHotel' => $chambre->idHotel, 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success boutonGauche bbb">Supprimer</a>
                     </td>
