@@ -12,6 +12,7 @@ $title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
 if ($douche != null):
     ?>
     <div class="asideChambre">
+        <div class="prix">Prix : <?php echo $this->escapeHtml($douche->prixDouche); ?> €</div>
         <p><strong>Douche</strong></p>
         <table>
             <tr>
@@ -20,7 +21,7 @@ if ($douche != null):
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
                     <p>Identifiant de la douche : <?php echo $this->escapeHtml($douche->idDouche); ?></p>
-                    <p>Prix : <?php echo $this->escapeHtml($douche->prixDouche); ?> €</p>
+
                 </td>
             </tr>
             <tr>
@@ -46,6 +47,7 @@ if ($douche != null):
 if ($baignoire != null): //si baignoire déja ajoutée
     ?>
     <div class="asideChambre">
+        <div class="prix">Prix : <?php echo $this->escapeHtml($baignoire->prixBaignoire); ?> €</div>
         <p><strong>Baignoire</strong></p>
         <table>
             <tr>
@@ -54,7 +56,6 @@ if ($baignoire != null): //si baignoire déja ajoutée
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
                     <p>Identifiant de la baignoire : <?php echo $this->escapeHtml($baignoire->idBaignoire); ?></p>
-                    <p>Prix : <?php echo $this->escapeHtml($baignoire->prixBaignoire); ?> €</p>
                 </td>
             </tr>
             <tr>
@@ -80,6 +81,7 @@ if ($baignoire != null): //si baignoire déja ajoutée
 if ($television != null): //TELEVISION
     ?>
     <div class="asideChambre">
+        <div class="prix">Prix : <?php echo $this->escapeHtml($television->prixTelevision); ?> €</div>
         <p><strong>Television</strong></p>
         <table>
             <tr>
@@ -88,7 +90,6 @@ if ($television != null): //TELEVISION
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
                     <p>Identifiant de la television : <?php echo $this->escapeHtml($television->idTelevision); ?></p>
-                    <p>Prix : <?php echo $this->escapeHtml($television->prixTelevision); ?> €</p>
                 </td>
             </tr>
             <tr>
@@ -114,6 +115,7 @@ if ($television != null): //TELEVISION
 if ($frigo != null): //si un frigo est déja ajouté
     ?>
     <div class="asideChambre">
+        <div class="prix">Prix : <?php echo $this->escapeHtml($frigo->prixFrigo); ?> €</div>
         <p><strong>Frigo</strong></p>
         <table>
             <tr>
@@ -122,7 +124,6 @@ if ($frigo != null): //si un frigo est déja ajouté
                     ?>" alt="Zend Framework 2" class="imgChambre"/></td>
                 <td class="Chambre" rowspan="1">
                     <p>Identifiant du frigo : <?php echo $this->escapeHtml($frigo->idFrigo); ?></p>
-                    <p>Prix : <?php echo $this->escapeHtml($frigo->prixFrigo); ?> €</p>
                 </td>
             </tr>
             <tr>

@@ -192,6 +192,22 @@ input[type="text"], input[type="number"], input[type="password"]{
 *******************************************
 ******************************************/
 
+.prix{
+    display: inline-block;
+    text-align: center;
+    height: 35px;
+    position: relative;
+    background-color: #ff0000;
+    box-shadow: 0px 2px 5px #1c1a00;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    float: right;
+    font-size: 13px;
+    font-family: Arial;
+}
+
+
 .Chambre{
     font-size: 18px;
     color: #1E2421;

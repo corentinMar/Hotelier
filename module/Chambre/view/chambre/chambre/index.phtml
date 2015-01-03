@@ -18,9 +18,8 @@ switch ($tri) {
 ?>
 <center>
     <?php foreach ($chambres as $chambre) : ?>
-        <div class="asideChambre">
+        <div class="asideChambre"><div class="prix"><?php echo $this->escapeHtml($chambre->type) * 20; ?> €</div>
             <table>
-
                 <tr>
                     <td rowspan="3">
                         <img src="<?php
@@ -32,9 +31,11 @@ switch ($tri) {
                         <a href="<?php echo $this->url('extra', array('action' => 'index', 'idChambre' => $chambre->idChambre)); ?>" class="btn btn-success">Extras</a>
                     </td>
                     <td class="Chambre" rowspan="3">
+                        
                         <h3><?php echo $this->escapeHtml($chambre->nomChambre); ?></h3>
                         <p>Chambre n°<?php echo $this->escapeHtml($chambre->idChambre); ?></p>
-                        <p>Type <?php echo $this->escapeHtml($chambre->type); ?> : <?php echo $this->escapeHtml($chambre->type) * 20; ?> €</p>
+                        <p>Type <?php echo $this->escapeHtml($chambre->type); ?></p>
+                        
                     </td>
                 </tr>
                 <tr>
