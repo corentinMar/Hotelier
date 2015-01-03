@@ -16,20 +16,18 @@ class BaignoireForm extends Form {
             'type' => 'Hidden',
         ));
 
-       
+
         $this->add(array(
             'name' => 'idBaignoire',
             'type' => 'Hidden',
         ));
-        
+
 
         $this->add(array(
             'name' => 'prixBaignoire',
             'type' => 'Number',
             'options' => array(
-                'label' => 'Prix de la baignoire: ',
-               
-               
+                'label' => 'Prix de la baignoire (en €) : ',
             ),
         ));
 

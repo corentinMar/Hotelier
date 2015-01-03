@@ -16,18 +16,18 @@ class DoucheForm extends Form {
             'type' => 'Hidden',
         ));
 
-       
+
         $this->add(array(
             'name' => 'idDouche',
             'type' => 'Hidden',
         ));
-        
+
 
         $this->add(array(
             'name' => 'prixDouche',
             'type' => 'Number',
             'options' => array(
-                'label' => 'Prix de la douche: ',
+                'label' => 'Prix de la douche (en €) : ',
             ),
         ));
 

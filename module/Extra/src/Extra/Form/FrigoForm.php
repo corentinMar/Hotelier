@@ -16,18 +16,18 @@ class FrigoForm extends Form {
             'type' => 'Hidden',
         ));
 
-       
+
         $this->add(array(
             'name' => 'idFrigo',
             'type' => 'Hidden',
         ));
-        
+
 
         $this->add(array(
             'name' => 'prixFrigo',
             'type' => 'Number',
             'options' => array(
-                'label' => 'Prix de la frigo: ',
+                'label' => 'Prix de la frigo (en €) : ',
             ),
         ));
 

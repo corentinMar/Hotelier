@@ -16,18 +16,18 @@ class TelevisionForm extends Form {
             'type' => 'Hidden',
         ));
 
-       
+
         $this->add(array(
             'name' => 'idTelevision',
             'type' => 'Hidden',
         ));
-        
+
 
         $this->add(array(
             'name' => 'prixTelevision',
             'type' => 'Number',
             'options' => array(
-                'label' => 'Prix de la television: ',
+                'label' => 'Prix de la television (en €) : ',
             ),
         ));
 
