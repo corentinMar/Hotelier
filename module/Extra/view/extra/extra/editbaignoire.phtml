@@ -7,7 +7,7 @@ $this->headTitle($title);
 <?php
 $form = $this->form;
 
-$form->setAttribute('action', $this->url('extra', array('action' => 'editbaignoire', 'idChambre' => $this->idChambre, 'idDouche' => $this->idBaignoire)));
+$form->setAttribute('action', $this->url('extra', array('action' => 'editbaignoire', 'idHotel' => $idHotel, 'idChambre' => $this->idChambre, 'idDouche' => $this->idBaignoire)));
 $form->prepare();
 ?>
 

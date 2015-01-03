@@ -4,7 +4,7 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
-$form->setAttribute('action', $this->url('extra', array('action' => 'addtelevision', 'idChambre' => $idChambre)));
+$form->setAttribute('action', $this->url('extra', array('action' => 'addtelevision', 'idHotel' => $idHotel, 'idChambre' => $idChambre)));
 $form->prepare();
 ?>
 
