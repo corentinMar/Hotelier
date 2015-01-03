@@ -12,6 +12,7 @@ class Television {
     public $idTelevision;
     public $idChambre;
     public $prixTelevision;
+    private $inputFilter;
 
     public function exchangeArray($data) {
         $this->idTelevision = (!empty($data['idTelevision'])) ? $data['idTelevision'] : null;

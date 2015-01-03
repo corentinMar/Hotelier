@@ -12,6 +12,7 @@ class Baignoire {
     public $idBaignoire;
     public $idChambre;
     public $prixBaignoire;
+    private $inputFilter;
 
     public function exchangeArray($data) {
         $this->idBaignoire = (!empty($data['idBaignoire'])) ? $data['idBaignoire'] : null;

@@ -12,6 +12,7 @@ class Frigo {
     public $idFrigo;
     public $idChambre;
     public $prixFrigo;
+    private $inputFilter;
 
     public function exchangeArray($data) {
         $this->idFrigo = (!empty($data['idFrigo'])) ? $data['idFrigo'] : null;
