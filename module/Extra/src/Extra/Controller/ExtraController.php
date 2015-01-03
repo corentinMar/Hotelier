@@ -195,7 +195,7 @@ class ExtraController extends AbstractActionController {
                 ));
             }
         }
-        return array('form' => $form, 'idChambre' => $idChambre);
+        return array('form' => $form, 'idHotel' => $idHotel, 'idChambre' => $idChambre);
     }
 
     public function edittelevisionAction() {
@@ -330,7 +330,7 @@ class ExtraController extends AbstractActionController {
                 ));
             }
         }
-        return array('form' => $form, 'idChambre' => $idChambre);
+        return array('form' => $form, 'idHotel' => $idHotel, 'idChambre' => $idChambre);
     }
 
     public function editfrigoAction() {
@@ -459,7 +459,7 @@ class ExtraController extends AbstractActionController {
                 ));
             }
         }
-        return array('form' => $form, 'idChambre' => $idChambre);
+        return array('form' => $form, 'idHotel' => $idHotel, 'idChambre' => $idChambre);
     }
 
     public function editbaignoireAction() {
