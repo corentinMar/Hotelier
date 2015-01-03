@@ -28,5 +28,11 @@ Puis via PhpMyAdmin, exécutez le script situé dans le dossier source *hotelier
 
 Si besoin, pour modifier le répertoire où seront écrit les logs, modifiez la ligne 29 située dans *hotelier/config/autoload/global.php*
 
+Utilisation
+----------
+Vous avez la possibilité de créer un compte ou de vous connecter avec les identifiants déjà existants:
+* Compte administrateur: Identifiant: admin - Mot de passe: admin
+* Identifiant: test - Mot de passe: test
+
 
 Merci ! :-)
