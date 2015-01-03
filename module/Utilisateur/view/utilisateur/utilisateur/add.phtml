@@ -21,7 +21,8 @@ $form->prepare();
     echo '<br />';
     echo $this->formRow($form->get('mdp_check'));
     echo '<br />';
-    //echo $this->formSubmit($form->get('submit'));
+    echo $this->formRow($form->get('captcha'));
+    echo '<br />';
     ?>
     <input class="btn btn-success" type="submit" name="submit" id="submitbutton" value="S'inscrire" />
     <a href="<?php echo $this->url('login'); ?>" class="btn btn-success">Annuler</a>
