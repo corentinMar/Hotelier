@@ -4,6 +4,7 @@ namespace Utilisateur\Form;
 
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
+use Zend\Captcha;
 
 class UtilisateurForm extends Form {
 
@@ -32,6 +33,17 @@ class UtilisateurForm extends Form {
             'type' => 'Password',
             'options' => array(
                 'label' => 'Confirmer le mot de passe : ',
+            ),
+        ));
+
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Captcha',
+            'name' => 'captcha',
+            'options' => array(
+                'label' => 'Recopier le captcha ci-dessous :',
+                'captcha' => new Captcha\Figlet(array(
+                    'wordLen' => 4,
+                        )),
             ),
         ));
 
