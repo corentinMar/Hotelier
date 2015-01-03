@@ -41,6 +41,12 @@ class HotelController extends AbstractActionController {
     // Add content to this method:
     public function addAction() {
         $form = new HotelForm();
+        //On pré-rempli le champ idAdminsitrateur
+        $form->get('idAdministrateur')->setValue(Module::$utilisateur->id);
+        if (!Module::$utilisateur->administrateur) {
+            //Si ce n'est pas un admin, alors il ne peut pas changer le champ idAdministrateur
+            $form->get('idAdministrateur')->setAttribute('readonly', 'readonly');
+        }
         $form->get('submit')->setValue('Ajouter');
 
         $request = $this->getRequest();
@@ -67,6 +73,8 @@ class HotelController extends AbstractActionController {
                 } else {
                     //Le propriétaire n'existe pas
                     $form = new HotelForm();
+                    //On pré-rempli le champ idAdminsitrateur
+                    $form->get('idAdministrateur')->setValue(Module::$utilisateur->id);
                     return array('form' => $form, 'message' => 'Erreur : Le propriétaire n\'existe pas.');
                 }
                 return array('form' => $form);
@@ -95,6 +103,10 @@ class HotelController extends AbstractActionController {
 
         $form = new HotelForm();
         $form->bind($hotel);
+        if (!Module::$utilisateur->administrateur) {
+            //Si ce n'est pas un admin, alors il ne peut pas changer le champ idAdministrateur
+            $form->get('idAdministrateur')->setAttribute('readonly', 'readonly');
+        }
         $form->get('submit')->setAttribute('value', 'Modifier');
 
         $request = $this->getRequest();
@@ -151,7 +163,7 @@ class HotelController extends AbstractActionController {
         return array(
             'idHotel' => $idHotel,
             'hotel' => $this->getHotelTable()->getHotel($idHotel),
-            'proprietaire' => $this->getProprietaireTable()->getProprietaire($idHotel)->nom,
+            'proprietaire' => $this->getProprietaireTable()->getProprietaire($this->getHotelTable()->getHotel($idHotel)->idAdministrateur)->nom,
         );
     }
 
