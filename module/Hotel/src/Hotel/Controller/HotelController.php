@@ -50,6 +50,7 @@ class HotelController extends AbstractActionController {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
+                $hotel->exchangeArray($form->getData());
                 //On vérifie que l'identifiant du propriétaire existe bien déjà
                 $existe = false;
                 $listeProprietaire = $this->getProprietaireTable()->fetchAll();
@@ -59,7 +60,6 @@ class HotelController extends AbstractActionController {
                     }
                 }
                 if ($existe) {
-                    $hotel->exchangeArray($form->getData());
                     $this->getHotelTable()->saveHotel($hotel);
 
                     // Redirect to list of hotels
