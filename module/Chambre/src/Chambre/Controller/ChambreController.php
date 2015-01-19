@@ -22,6 +22,13 @@ class ChambreController extends AbstractActionController {
         //exit(0);
     }
     
+    public function listeChambreJsonAction() {
+        /* Le Json brut */
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        echo Json::encode($this->getChambreTable()->getListeChambre($idHotel));
+        exit(0);
+    }
+    
     public function indexAction() {
         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         return new ViewModel(array(
