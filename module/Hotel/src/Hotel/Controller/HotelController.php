@@ -16,12 +16,19 @@ class HotelController extends AbstractActionController {
     protected $proprietaireTable;
 
     public function indexjsonAction() {
+        /* Pour la vue du Json */
         $json = Json::encode($this->getHotelTable()->fetchAll());
 
         return new ViewModel(array(
             'hotels' => $json,
         ));
         //exit(0);
+    }
+
+    public function listeHotelJsonAction() {
+        /* Le Json brut */
+        echo Json::encode($this->getHotelTable()->fetchAll());
+        exit(0);
     }
 
     public function indexAction() {
