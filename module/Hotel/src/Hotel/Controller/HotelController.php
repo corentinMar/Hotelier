@@ -8,11 +8,21 @@ use Hotel\Model\Hotel;
 use Hotel\Model\Proprietaire;
 use Hotel\Form\HotelForm;
 use Application\Module;
+use Zend\Json\Json;
 
 class HotelController extends AbstractActionController {
 
     protected $hotelTable;
     protected $proprietaireTable;
+
+    public function indexjsonAction() {
+        $json = Json::encode($this->getHotelTable()->fetchAll());
+
+        return new ViewModel(array(
+            'hotels' => $json,
+        ));
+        //exit(0);
+    }
 
     public function indexAction() {
         //L'utilisateur est admin ou non ?
