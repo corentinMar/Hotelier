@@ -16,6 +16,27 @@ class ExtraController extends AbstractActionController {
     protected $frigoTable;
     protected $baignoireTable;
 
+    public function indexjsonAction() {
+
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+
+        $json_douche = Json::encode($this->getDoucheTable()->getDouche($idChambre));
+        $json_television = Json::encode($this->getTelevisionTable()->getTelevision($idChambre));
+        $json_frigo = Json::encode($this->getFrigoTable()->getFrigo($idChambre));
+        $json_baignoire = Json::encode($this->getBaignoireTable()->getBaignoire($idChambre));
+
+        return new ViewModel(array(
+            'idHotel' => $idHotel,
+            'idChambre' => $idChambre,
+            'douche' => $json_douche,
+            'television' => $json_television,
+            'frigo' => $json_frigo,
+            'baignoire' => $json_baignoire,
+        ));
+        //exit(0);
+    }
+
     public function indexAction() {
 
         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);

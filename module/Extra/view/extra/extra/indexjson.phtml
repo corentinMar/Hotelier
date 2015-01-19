@@ -1,0 +1,23 @@
+<?php
+$title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
+
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?> <a href="index" class="btn btn-success">Normal</a></h1>
+<center>
+    <?php
+    echo"--- Douche ---";
+    echo $douche;
+
+    echo"--- Television ---";
+    echo $television;
+
+    echo"--- Frigo ---";
+    echo $frigo;
+
+    echo"--- Baignoire---";
+    echo $baignoire;
+    ?>
+</center>
+
+
