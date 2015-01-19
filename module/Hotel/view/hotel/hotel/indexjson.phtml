@@ -6,12 +6,14 @@ $this->headTitle($title);
 <center>
     <div ng-app="" ng-controller="hotelsController">
 
-        <table>
-            <tr ng-repeat="x in hotels">
-                <td>{{ x.idHotel}}</td>
-                <td>{{ x.idAdministrateur}}</td>
-                <td>{{ x.nomHotel}}</td>
-            </tr>
+        <table class="table ng-table-responsive table-condensed table-hover table-bordered table-striped">
+            <tbody>
+                <tr ng-repeat="h in hotels">
+                    <td>{{ h.idHotel}}</td>
+                    <td>{{ h.idAdministrateur}}</td>
+                    <td>{{ h.nomHotel}}</td>
+                </tr>
+            </tbody>
         </table>
 
     </div>
