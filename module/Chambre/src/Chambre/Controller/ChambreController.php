@@ -6,17 +6,29 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Chambre\Model\Chambre;
 use Chambre\Form\ChambreForm;
+use Zend\Json\Json;
 
 class ChambreController extends AbstractActionController {
 
     protected $chambreTable;
 
+    public function indexjsonAction() {
+        $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
+        $json = Json::encode($this->getChambreTable()->getListeChambre($idHotel));
+        return new ViewModel(array(
+            'chambres' => $json,
+            'idHotel' => $idHotel,
+        ));
+        //exit(0);
+    }
+    
     public function indexAction() {
         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
         return new ViewModel(array(
             'chambres' => $this->getChambreTable()->getListeChambre($idHotel),
             'idHotel' => $idHotel,
         ));
+        
     }
 
     // Add content to this method:
