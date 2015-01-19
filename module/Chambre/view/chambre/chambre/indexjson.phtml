@@ -2,12 +2,31 @@
 $title = "Gestion des chambres de l'hôtel n°" . $this->escapeHtml($idHotel) . " - Json";
 $this->headTitle($title);
 $adresse = "http://localhost/HotelierJson/public/chambre//" . $this->escapeHtml($idHotel);
+$affichage = "\"http://localhost/HotelierJson/public/chambre/listeChambreJson/" . $this->escapeHtml($idHotel) . "\"";
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?> <a href=<?php echo $adresse ?> class="btn btn-success">Normal</a></h1>
 
 <center>
-    <?php echo $chambres; ?>
+    <div ng-app="" ng-controller="chambresController">
+
+        <table>
+            <tr ng-repeat="x in chambres">
+                <td>{{ x.idChambre}}</td>
+                <td>{{ x.idHotel}}</td>
+                <td>{{ x.nomChambre}}</td>
+                <td>{{ x.type}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function chambresController($scope, $http) {
+            $http.get(<?php echo $affichage; ?>)
+                    .success(function (response) {
+                        $scope.chambres = response;
+                    });
+        }
+    </script>
 </center>
-
-

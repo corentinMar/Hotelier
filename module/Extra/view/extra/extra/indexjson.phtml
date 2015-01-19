@@ -2,22 +2,96 @@
 $title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
 $adresse = "http://localhost/HotelierJson/public/extra//1/" . $this->escapeHtml($idHotel);
 $this->headTitle($title);
+$affichageDouche = "\"http://localhost/HotelierJson/public/extra/listeExtraDoucheJson/" . $this->escapeHtml($idChambre) . "\"";
+
 ?>
 <h1><?php echo $this->escapeHtml($title); ?> <a href=<?php echo $adresse ?> class="btn btn-success">Normal</a></h1>
+
 <center>
-    <?php
-    echo"--- Douche ---";
-    echo $douche;
+    <div ng-app="" ng-controller="doucheController">
 
-    echo"--- Television ---";
-    echo $television;
+        <table>
+            <tr ng-repeat="x in douche">
+                <td>{{ x.idDouche}}</td>
+                <td>{{ x.prixDouche}}</td>
+            </tr>
+        </table>
 
-    echo"--- Frigo ---";
-    echo $frigo;
+    </div>
 
-    echo"--- Baignoire---";
-    echo $baignoire;
-    ?>
+    <script>
+        function doucheController($scope, $http) {
+            $http.get(<?php echo $affichageDouche; ?>)
+                    .success(function(response) {
+                        $scope.douche = response;
+                    });
+        }
+    </script>
+
+
+    <div ng-app="" ng-controller="frigoController">
+        <table>
+            <tr ng-repeat="x in frigo">
+                <td>{{ x.idFrigo}}</td>
+                <td>{{ x.prixFrigo}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function frigoController($scope, $http) {
+            $http.get("http://localhost/HotelierJson/public/extra/listeExtraFrigoJson")
+                    .success(function(response) {
+                        $scope.frigo = response;
+                    });
+        }
+    </script>
+
+
+    <div ng-app="" ng-controller="televisionController">
+        <table>
+            <tr ng-repeat="x in television">
+                <td>{{ x.idTelevision}}</td>
+                <td>{{ x.prixTelevision}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function televisionController($scope, $http) {
+            $http.get("http://localhost/HotelierJson/public/extra/listeExtraTelevisionJson")
+                    .success(function(response) {
+                        $scope.television = response;
+                    });
+        }
+    </script>
+    
+        <div ng-app="" ng-controller="baignoireController">
+        <table>
+            <tr ng-repeat="x in baignoire">
+                <td>{{ x.idBaignoire}}</td>
+                <td>{{ x.prixBaignoire}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function baignoireController($scope, $http) {
+            $http.get("http://localhost/HotelierJson/public/extra/listeExtraBaignoireJson")
+                    .success(function(response) {
+                        $scope.baignoire = response;
+                    });
+        }
+    </script>
+
+
+
+
+
+
 </center>
 
 

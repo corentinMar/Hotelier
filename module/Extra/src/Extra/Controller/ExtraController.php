@@ -38,6 +38,34 @@ class ExtraController extends AbstractActionController {
         //exit(0);
     }
 
+    public function listeExtraDoucheJsonAction() {
+        /* Le Json brut de la douche */
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        echo Json::encode($this->getDoucheTable()->getDouche($idChambre));
+        exit(0);
+    }
+
+    public function listeExtraTelevisionJsonAction() {
+        /* Le Json brut de la television*/
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        echo Json::encode($this->getTelevisionTable()->getTelevision($idChambre));
+        exit(0);
+    }
+
+    public function listeExtraFrigoJsonAction() {
+        /* Le Json brut du frigo*/
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        echo Json::encode($this->getFrigoTable()->getFrigo($idChambre));
+        exit(0);
+    }
+
+    public function listeExtraBaignoireJsonAction() {
+        /* Le Json brut de la baignoire*/
+        $idChambre = (int) $this->params()->fromRoute('idChambre', 0);
+        echo Json::encode($this->getBaignoireTable()->getBaignoire($idChambre));
+        exit(0);
+    }
+
     public function indexAction() {
 
         $idHotel = (int) $this->params()->fromRoute('idHotel', 0);
