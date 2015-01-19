@@ -8,6 +8,7 @@ use Extra\Form\DoucheForm;
 use Extra\Form\TelevisionForm;
 use Extra\Form\FrigoForm;
 use Extra\Form\BaignoireForm;
+use Zend\Json\Json;
 
 class ExtraController extends AbstractActionController {
 
