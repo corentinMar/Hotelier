@@ -2,11 +2,10 @@
 $title = "Gestion des extras de la chambre n°" . $this->escapeHtml($idChambre);
 $adresse = "http://localhost/HotelierJson/public/extra//1/" . $this->escapeHtml($idHotel);
 $this->headTitle($title);
+$affichageDouche = "\"http://localhost/HotelierJson/public/extra/listeExtraDoucheJson/" . $this->escapeHtml($idChambre) . "\"";
+
 ?>
 <h1><?php echo $this->escapeHtml($title); ?> <a href=<?php echo $adresse ?> class="btn btn-success">Normal</a></h1>
-<h1><?php echo $this->escapeHtml($title); ?> <a href="index" class="btn btn-success">Normal</a></h1>
-
-
 
 <center>
     <div ng-app="" ng-controller="doucheController">
@@ -22,7 +21,7 @@ $this->headTitle($title);
 
     <script>
         function doucheController($scope, $http) {
-            $http.get("http://localhost/HotelierJson/public/extra/listeExtraDoucheJson")
+            $http.get(<?php echo $affichageDouche; ?>)
                     .success(function(response) {
                         $scope.douche = response;
                     });
