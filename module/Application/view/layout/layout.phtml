@@ -31,7 +31,8 @@ echo $this->doctype();
                 ->prependFile($this->basePath() . '/js/jquery.min.js')
                 ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-        ;
+                ->prependFile($this->basePath() . '/js/angular.min.js')
+                ->prependFile($this->basePath() . '/js/ng-table.min.js')
         ?>
 
     </head>
@@ -54,7 +55,7 @@ echo $this->doctype();
                     <?php if (Module::$utilisateur) { ?><div class="infos">Connecté en tant que <strong><?php echo Module::$utilisateur->nom; ?></strong> - <a href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>" class="deco">Déconnexion</a></div><?php } ?>
                 </div>
             </div>
-            
+
         </nav>
         <div class="container">
             <?php echo $this->content; ?>

@@ -4,7 +4,24 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?> <a href="index" class="btn btn-success">Normal</a></h1>
 <center>
-    <?php echo $hotels; ?>
+    <div ng-app="" ng-controller="hotelsController">
+
+        <table>
+            <tr ng-repeat="x in hotels">
+                <td>{{ x.idHotel}}</td>
+                <td>{{ x.idAdministrateur}}</td>
+                <td>{{ x.nomHotel}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function hotelsController($scope, $http) {
+            $http.get("http://localhost/HotelierJson/public/hotel/listeHotelJson")
+                    .success(function (response) {
+                        $scope.hotels = response;
+                    });
+        }
+    </script>
 </center>
-
-
