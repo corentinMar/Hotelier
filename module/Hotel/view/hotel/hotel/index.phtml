@@ -2,7 +2,7 @@
 $title = 'Mes hôtels';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<h1><?php echo $this->escapeHtml($title); ?> <a href="indexjson" class="btn btn-success">Json</a></h1>
 <p>
     <a href="<?php echo $this->url('hotel', array('action' => 'add')); ?>" class="btn btn-success">Ajouter un hôtel</a>
 </p>
@@ -26,7 +26,7 @@ $this->headTitle($title);
                             $b = $this->escapeHtml($hotel->idHotel) % 30;
                             echo $this->basePath('img/Hotel/' . $b . '.jpg')
                             ?>" alt="Image hôtel" class="imgHotel"/>
-                            
+
                             <span class="Hotel">
                                 <p>Hôtel n°<?php echo $this->escapeHtml($hotel->idHotel); ?></p>
                                 <p><i><?php echo $this->escapeHtml($hotel->nomHotel); ?></i></p>
@@ -35,7 +35,7 @@ $this->headTitle($title);
                             <p class="nomHotel">© <?php echo $this->escapeHtml($hotel->nomHotel); ?></p>
                         </div>
                     </td>
-                </tr>               
+                </tr>
             </table>
         </div>
     <?php endforeach; ?>
