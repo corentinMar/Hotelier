@@ -26,6 +26,8 @@ composer install
 
 Puis via PhpMyAdmin, créez un base nommée 'hotelier' et exécutez le script situé dans le dossier source *hotelier/hotelier.sql*
 
+N'oubliez pas de modifier votre *username* et *password* dans le fichier *hotelier/config/autoload/local.php* pour qu'ils correspondent à votre accès en base de données
+
 Si besoin, pour modifier le répertoire où seront écrit les logs, modifiez la ligne 29 située dans *hotelier/config/autoload/global.php*
 
 Utilisation
@@ -35,6 +37,7 @@ Vous avez la possibilité de créer un compte ou de vous connecter avec les iden
 - Compte administrateur
 * Nom : admin
 * Mot de passe : admin
+
 
 - Compte utilisateur
 * Nom : test
