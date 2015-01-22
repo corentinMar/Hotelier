@@ -4,7 +4,6 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?> <a href="index" class="btn btn-success">Normal</a></h1>
 <center>
-    <!-- Arnaud Code Edit-->
     <body ng-app="main">
         <div ng-controller="DemoCtrl">
             <p><strong>Page n°</strong> {{tableParams.page()}} <strong></p>
@@ -12,13 +11,12 @@ $this->headTitle($title);
 
             <table ng-table="tableParams" class="table ng-table-responsive table-condensed table-hover table-bordered table-striped">
                 <tr ng-repeat="hotel in $data">
-                    <td data-title="'Identifiant'">{{hotel.idHotel}}</td>
-                    <td data-title="'Administrateur'">{{hotel.idAdministrateur}}</td>
-                    <td data-title="'Nom'">{{hotel.nomHotel}}</td>
+                    <td data-title="'Identifiant'" sortable="'idHotel'">{{hotel.idHotel}}</td>
+                    <td data-title="'Administrateur'" sortable="'idAdministrateur'">{{hotel.idAdministrateur}}</td>
+                    <td data-title="'Nom'" sortable="'nomHotel'">{{hotel.nomHotel}}</td>
                     <td data-title="'Options'"><a href="<?php echo $this->url('chambre', array('action' => 'indexjson', 'idHotel' => '')) . '{{hotel.idHotel}}'; ?>" class="btn btn-success">Gérer</a> <a href="<?php echo $this->url('hotel', array('action' => 'edit', 'idHotel' => '')) . '{{hotel.idHotel}}'; ?>" class="btn btn-success">Modifier</a> <a href="<?php echo $this->url('hotel', array('action' => 'delete', 'idHotel' => '')) . '{{hotel.idHotel}}'; ?>" class="btn btn-success">Supprimer</a></td>
                 </tr>
             </table>
         </div>
-        <p>Par Arnaud</p>
     </body>
 </center>
